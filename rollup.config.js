@@ -10,7 +10,7 @@ export const plugins = [
 ];
 
 const config = defineConfig({
-  input: 'src/index.jsx',
+  input: 'src/index.js',
   external: ['react', 'marked'],
   plugins,
   output: [
