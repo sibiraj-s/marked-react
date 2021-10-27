@@ -32,7 +32,8 @@
     "dev": "rollup -c -w",
     "build": "rollup -c",
     "test": "jest",
-    "prepare": "is-ci || husky install"
+    "prepare": "is-ci || husky install",
+    "prepublishOnly": "is-ci || npm run build"
   },
   "peerDependencies": {
     "marked": "^3.0.0",
