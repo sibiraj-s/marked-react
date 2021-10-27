@@ -13,9 +13,15 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v0.1.2 (2021-10-27)
+
+#### Features
+
+- render task list with gfm enabled ([43acef4](https://github.com/sibiraj-s/marked-react/commit/43acef4))
+
 ## v0.1.1 (2021-10-27)
 
-#### Bug Fixes
+#### Features
 
 - render images inside links ([fd3603b](https://github.com/sibiraj-s/marked-react/commit/fd3603b))
 
