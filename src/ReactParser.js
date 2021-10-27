@@ -45,7 +45,15 @@ class ReactParser {
 
         case 'list': {
           const children = token.items.map((item) => {
-            return this.renderer.listItem(this.parse(item.tokens));
+            const listItemChildren = [];
+
+            if (item.task) {
+              listItemChildren.push(this.renderer.checkbox(item.checked));
+            }
+
+            listItemChildren.push(this.parse(item.tokens));
+
+            return this.renderer.listItem(listItemChildren);
           });
 
           return this.renderer.list(token.ordered, children);

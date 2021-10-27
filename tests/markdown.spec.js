@@ -171,6 +171,21 @@ const cases = [
     markdown: '[![Tests](https://p.com/i.png)](https://p.com)',
     html: '<p><a href="https://p.com" target="_blank"><img src="https://p.com/i.png" alt="Tests"/></a></p>',
   },
+  {
+    title: 'should render task list correctly',
+    markdown: '- [x] checked\n- [ ] unchecked',
+    html: '<ul><li><input type="checkbox" disabled="" checked=""/>checked</li><li><input type="checkbox" disabled=""/>unchecked</li></ul>',
+  },
+  {
+    title: 'should not render task list with gfm disabled',
+    markdown: '- [x] checked\n- [ ] unchecked',
+    html: '<ul><li>[x] checked</li><li>[ ] unchecked</li></ul>',
+    props: {
+      options: {
+        gfm: false,
+      },
+    },
+  },
 ];
 
 test.each(cases)('should $title', ({ markdown, html, props = null }) => {

@@ -51,6 +51,10 @@ class ReactRenderer {
     return this.crel(ordered ? 'ol' : 'ul', children);
   }
 
+  checkbox(checked = false) {
+    return this.crel('input', null, { type: 'checkbox', disabled: true, checked });
+  }
+
   listItem(children) {
     return this.crel('li', children);
   }
