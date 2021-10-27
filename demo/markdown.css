@@ -28,12 +28,9 @@ h1 {
   margin: 0.5rem 0;
 }
 
-h2 {
-  margin: 0.3rem 0;
-}
-
+h2,
 h3 {
-  margin: 0.2rem 0;
+  margin: 0.3rem 0;
 }
 
 ul,
