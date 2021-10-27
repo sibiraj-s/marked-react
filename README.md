@@ -2,6 +2,11 @@
 
 > Render Markdown as React components using [marked](https://marked.js.org/).
 
+[![Tests](https://github.com/sibiraj-s/marked-react/actions/workflows/tests.yml/badge.svg)](https://github.com/sibiraj-s/marked-react/actions/workflows/tests.yml)
+![Version](https://badgen.net/npm/v/marked-react)
+![License](https://badgen.net/npm/license/marked-react)
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/sibiraj-s/marked-react)
+
 ## TL;DR
 
 - Uses [marked](https://marked.js.org/) to parse markdown
