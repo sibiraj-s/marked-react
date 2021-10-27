@@ -14,6 +14,8 @@ class ReactParser {
   }
 
   parse(tokens) {
+    const { langPrefix } = this.options;
+
     return tokens.map((token) => {
       switch (token.type) {
         case 'space': {
@@ -50,7 +52,7 @@ class ReactParser {
         }
 
         case 'code': {
-          const lang = token.lang ? `${this.options.langPrefix}${token.lang}` : null;
+          const lang = token.lang ? `${langPrefix}${token.lang}` : null;
           return this.renderer.code(token.text, lang);
         }
 
@@ -90,6 +92,8 @@ class ReactParser {
   }
 
   parseInline(tokens) {
+    const { baseURL, openLinksInNewTab } = this.options;
+
     return tokens.map((token) => {
       switch (token.type) {
         case 'text': {
@@ -121,12 +125,12 @@ class ReactParser {
         }
 
         case 'link': {
-          const href = joinBase(token.href, this.options.baseURL);
-          return this.renderer.link(href, token.text, this.options.openLinksInNewTab);
+          const href = joinBase(token.href, baseURL);
+          return this.renderer.link(href, this.parseInline(token.tokens), openLinksInNewTab);
         }
 
         case 'image': {
-          const href = joinBase(token.href, this.options.baseURL);
+          const href = joinBase(token.href, baseURL);
           return this.renderer.image(href, token.text, token.title);
         }
 

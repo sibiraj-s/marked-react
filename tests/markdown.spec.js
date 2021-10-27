@@ -87,13 +87,13 @@ const cases = [
   },
   {
     title: 'render unordered lists',
-    markdown: '- option 1\n- option 2',
-    html: '<ul><li>option 1</li><li>option 2</li></ul>',
+    markdown: '- option-1\n- option-2',
+    html: '<ul><li>option-1</li><li>option-2</li></ul>',
   },
   {
     title: 'render ordered lists',
-    markdown: '1. option 1\n2. option 2',
-    html: '<ol><li>option 1</li><li>option 2</li></ol>',
+    markdown: '1. option-1\n2. option-2',
+    html: '<ol><li>option-1</li><li>option-2</li></ol>',
   },
   {
     title: 'render codeblocks',
@@ -147,8 +147,8 @@ const cases = [
   },
   {
     title: 'should render table',
-    markdown: '|CellHead|\n|--|\n|CellBody|',
-    html: '<table><thead><tr><th>CellHead</th></tr></thead><tbody><tr><td>CellBody</td></tr></tbody></table>',
+    markdown: '|Head|\n|--|\n|Body|',
+    html: '<table><thead><tr><th>Head</th></tr></thead><tbody><tr><td>Body</td></tr></tbody></table>',
   },
   {
     title: 'should render br tag',
@@ -165,6 +165,11 @@ const cases = [
     title: 'should render nothing for just line breaks',
     markdown: '\n\n\n',
     html: '',
+  },
+  {
+    title: 'should parse images inside links',
+    markdown: '[![Tests](https://p.com/i.png)](https://p.com)',
+    html: '<p><a href="https://p.com" target="_blank"><img src="https://p.com/i.png" alt="Tests"/></a></p>',
   },
 ];
 
