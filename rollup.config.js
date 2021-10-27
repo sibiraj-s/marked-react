@@ -9,7 +9,7 @@ export const plugins = [
   babel({ babelHelpers: 'bundled' }),
 ];
 
-export default defineConfig({
+const config = defineConfig({
   input: 'src/index.jsx',
   external: ['react', 'marked'],
   plugins,
@@ -27,3 +27,5 @@ export default defineConfig({
     },
   ],
 });
+
+export default config;
