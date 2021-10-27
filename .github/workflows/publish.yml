@@ -1,16 +1,14 @@
-name: Tests
+name: NPM Publish
 
 env:
   NODE_VERSION: 16
 
 on:
   push:
-    branches: master
-  pull_request:
-    branches: master
+    tags: v*
 
 jobs:
-  test:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,6 +18,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ env.NODE_VERSION }}
+          registry-url: https://registry.npmjs.org/
           cache: npm
 
       - run: node --version
@@ -35,3 +34,8 @@ jobs:
 
       - name: Tests
         run: npm run test
+
+      - name: Publish to NPM
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
