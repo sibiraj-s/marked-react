@@ -7,7 +7,7 @@ class ReactRenderer {
 
   crel(el, children, props) {
     const elProps = {
-      key: `react-marked-${this.elementId}`,
+      key: `marked-react-${this.elementId}`,
     };
 
     this.elementId += 1;
