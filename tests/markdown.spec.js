@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
-import Markdown from 'marked-react';
+import Markdown from '../src';
 
 const cases = [
   {

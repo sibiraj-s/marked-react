@@ -3,6 +3,7 @@ import { lexer } from 'marked';
 
 import defaults from './defaults';
 import ReactParser from './ReactParser';
+import ReactRenderer from './ReactRenderer';
 
 const validateComponentProps = (props) => {
   if (props.value && typeof props.value !== 'string') {
@@ -28,9 +29,12 @@ const Markdown = (props) => {
 
   // parser options
   const parserOptions = {
-    baseURL: props.baseURL,
-    openLinksInNewTab: props.openLinksInNewTab,
-    langPrefix: props.langPrefix,
+    renderer: new ReactRenderer({
+      renderer: props.renderer,
+      baseURL: props.baseURL,
+      openLinksInNewTab: props.openLinksInNewTab,
+      langPrefix: props.langPrefix,
+    }),
   };
 
   const children = new ReactParser(parserOptions).parse(tokens);

@@ -1,7 +1,26 @@
 import { createElement } from 'react';
 
+import defaults from './defaults';
+import { joinBase } from './helpers';
+
 class ReactRenderer {
   elementId = 0;
+
+  constructor(options = defaults) {
+    const { renderer } = options;
+
+    this.options = options;
+
+    if (renderer && typeof renderer === 'object') {
+      Object.entries(renderer).forEach(([rendererName, renderFunction]) => {
+        const originalRenderFunction = this[rendererName];
+
+        if (originalRenderFunction && typeof renderFunction === 'function') {
+          this[rendererName] = renderFunction;
+        }
+      });
+    }
+  }
 
   crel(el, children, props) {
     const elProps = {
@@ -20,17 +39,20 @@ class ReactRenderer {
     return this.crel('p', children);
   }
 
-  link(href, text, openLinksInNewTab) {
-    const target = openLinksInNewTab ? '_blank' : null;
-    return this.crel('a', text, { href, target });
+  link(href, text) {
+    const url = joinBase(href, this.options.baseURL);
+    const target = this.options.openLinksInNewTab ? '_blank' : null;
+    return this.crel('a', text, { href: url, target });
   }
 
   image(href, text, title) {
-    return this.crel('img', null, { src: href, alt: text, title });
+    const url = joinBase(href, this.options.baseURL);
+    return this.crel('img', null, { src: url, alt: text, title });
   }
 
   codespan(code, lang) {
-    return this.crel('code', code, { className: lang || null });
+    const className = lang ? `${this.options.langPrefix}${lang}` : null;
+    return this.crel('code', code, { className });
   }
 
   code(code, lang) {
@@ -41,7 +63,7 @@ class ReactRenderer {
     return this.crel('blockquote', children);
   }
 
-  list(ordered, children) {
+  list(children, ordered) {
     return this.crel(ordered ? 'ol' : 'ul', children);
   }
 
@@ -49,7 +71,7 @@ class ReactRenderer {
     return this.crel('li', children);
   }
 
-  checkbox(checked = false) {
+  checkbox(checked) {
     return this.crel('input', null, { type: 'checkbox', disabled: true, checked });
   }
 

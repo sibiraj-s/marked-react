@@ -1,5 +1,7 @@
 declare module 'marked-react' {
-  import React from 'react';
+  import React, { ReactElement } from 'react';
+
+  type RendererFunction = (...args: any[]) => ReactElement | null;
 
   export interface MarkdownOptions {
     breaks?: boolean;
@@ -7,6 +9,7 @@ declare module 'marked-react' {
     baseURL?: string;
     openLinksInNewTab?: boolean;
     langPrefix?: string;
+    renderer: Record<string, RendererFunction>;
   }
 
   interface Props extends MarkdownOptions {

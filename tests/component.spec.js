@@ -1,38 +1,48 @@
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 
-import Markdown from 'marked-react';
+import Markdown from '../src';
 
 it('should render nothing if nothing is given', () => {
-  const marked = React.createElement(Markdown);
-  const html = ReactDOMServer.renderToStaticMarkup(marked);
+  const marked = createElement(Markdown);
+  const html = renderToStaticMarkup(marked);
   expect(html).toBe('');
 });
 
 it('should render markdown correctly', () => {
-  const marked = React.createElement(Markdown, null, '# Hello world!');
-  const html = ReactDOMServer.renderToStaticMarkup(marked);
+  const marked = createElement(Markdown, null, '# Hello world!');
+  const html = renderToStaticMarkup(marked);
   expect(html).toBe('<h1>Hello world!</h1>');
 });
 
 it('should prefer value over children render markdown correctly', () => {
-  const marked = React.createElement(Markdown, { value: 'Hey' }, 'Hello');
-  const html = ReactDOMServer.renderToStaticMarkup(marked);
+  const marked = createElement(Markdown, { value: 'Hey' }, 'Hello');
+  const html = renderToStaticMarkup(marked);
   expect(html).toBe('<p>Hey</p>');
 });
 
 it('should throw error if children is not a string', () => {
-  const marked = React.createElement(Markdown, null, 1);
+  const marked = createElement(Markdown, null, 1);
 
-  expect(() => {
-    ReactDOMServer.renderToStaticMarkup(marked);
-  }).toThrowError(new TypeError('[marked-react]: Expected children to be of type string but got number'));
+  expect(() => renderToStaticMarkup(marked)).toThrowError(new TypeError('[marked-react]: Expected children to be of type string but got number'));
 });
 
 it('should throw error if value is not a string', () => {
-  const marked = React.createElement(Markdown, { value: 1 });
+  const marked = createElement(Markdown, { value: 1 });
 
   expect(() => {
-    ReactDOMServer.renderToStaticMarkup(marked);
+    renderToStaticMarkup(marked);
   }).toThrowError(new TypeError('[marked-react]: Expected value to be of type string but got number'));
+});
+
+it('should use custom renderer to render elements', () => {
+  const renderer = {
+    heading: (node, level) => {
+      return createElement(`h${level}`, null, `This is a heading: ${node}`);
+    },
+  };
+
+  const marked = createElement(Markdown, { value: '# Hello World!', renderer });
+  const html = renderToStaticMarkup(marked);
+  expect(html).toBe('<h1>This is a heading: Hello World!</h1>');
 });

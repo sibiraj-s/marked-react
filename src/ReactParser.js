@@ -1,17 +1,15 @@
 import ReactRenderer from './ReactRenderer';
-import { unescape, joinBase } from './helpers';
+import { unescape } from './helpers';
 
 import defaults from './defaults';
 
 class ReactParser {
   constructor(options = defaults) {
     this.options = options;
-    this.renderer = new ReactRenderer();
+    this.renderer = options.renderer || new ReactRenderer();
   }
 
   parse(tokens) {
-    const { langPrefix } = this.options;
-
     return tokens.map((token) => {
       switch (token.type) {
         case 'space': {
@@ -48,12 +46,11 @@ class ReactParser {
             return this.renderer.listItem(listItemChildren);
           });
 
-          return this.renderer.list(token.ordered, children);
+          return this.renderer.list(children, token.ordered);
         }
 
         case 'code': {
-          const lang = token.lang ? `${langPrefix}${token.lang}` : null;
-          return this.renderer.code(token.text, lang);
+          return this.renderer.code(token.text, token.lang);
         }
 
         case 'html': {
@@ -96,8 +93,6 @@ class ReactParser {
   }
 
   parseInline(tokens) {
-    const { baseURL, openLinksInNewTab } = this.options;
-
     return tokens.map((token) => {
       switch (token.type) {
         case 'text': {
@@ -121,13 +116,11 @@ class ReactParser {
         }
 
         case 'link': {
-          const href = joinBase(token.href, baseURL);
-          return this.renderer.link(href, this.parseInline(token.tokens), openLinksInNewTab);
+          return this.renderer.link(token.href, this.parseInline(token.tokens));
         }
 
         case 'image': {
-          const href = joinBase(token.href, baseURL);
-          return this.renderer.image(href, token.text, token.title);
+          return this.renderer.image(token.href, token.text, token.title);
         }
 
         case 'html': {
