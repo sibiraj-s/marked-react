@@ -36,8 +36,10 @@
     "prepublishOnly": "is-ci || npm run build"
   },
   "peerDependencies": {
-    "marked": "^3.0.0",
     "react": "^16.8.0 || ^17.0.0"
+  },
+  "dependencies": {
+    "marked": "^3.0.8"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
@@ -57,7 +59,6 @@
     "is-ci": "^3.0.1",
     "jest": "^27.3.1",
     "lint-staged": "11.2.6",
-    "marked": "^3.0.8",
     "prettier": "^2.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
