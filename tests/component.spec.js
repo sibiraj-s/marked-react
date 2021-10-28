@@ -38,7 +38,7 @@ it('should throw error if value is not a string', () => {
 it('should use custom renderer to render elements', () => {
   const renderer = {
     heading: (node, level) => {
-      return createElement(`h${level}`, null, `This is a heading: ${node}`);
+      return createElement(`h${level}`, { key: 'marked-react-custom-header' }, `This is a heading: ${node}`);
     },
   };
 
