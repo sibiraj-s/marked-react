@@ -1,9 +1,7 @@
-import { createElement, Fragment } from 'react';
+import { createElement } from 'react';
 
 class ReactRenderer {
-  constructor() {
-    this.elementId = 0;
-  }
+  elementId = 0;
 
   crel(el, children, props) {
     const elProps = {
@@ -14,16 +12,12 @@ class ReactRenderer {
     return createElement(el, { ...props, ...elProps }, children);
   }
 
-  heading(text, level) {
-    return this.crel(`h${level}`, text);
+  heading(children, level) {
+    return this.crel(`h${level}`, children);
   }
 
   paragraph(children) {
     return this.crel('p', children);
-  }
-
-  text(text) {
-    return this.crel(Fragment, text);
   }
 
   link(href, text, openLinksInNewTab) {
@@ -43,20 +37,20 @@ class ReactRenderer {
     return this.crel('pre', this.codespan(code, lang));
   }
 
-  blockquote(quote) {
-    return this.crel('blockquote', quote);
+  blockquote(children) {
+    return this.crel('blockquote', children);
   }
 
   list(ordered, children) {
     return this.crel(ordered ? 'ol' : 'ul', children);
   }
 
-  checkbox(checked = false) {
-    return this.crel('input', null, { type: 'checkbox', disabled: true, checked });
-  }
-
   listItem(children) {
     return this.crel('li', children);
+  }
+
+  checkbox(checked = false) {
+    return this.crel('input', null, { type: 'checkbox', disabled: true, checked });
   }
 
   table(children) {
@@ -92,8 +86,12 @@ class ReactRenderer {
     return this.crel('del', children);
   }
 
+  text(text) {
+    return text;
+  }
+
   html(html) {
-    return this.crel(Fragment, html);
+    return html;
   }
 
   hr() {
