@@ -28,8 +28,8 @@
   ],
   "scripts": {
     "lint": "eslint . --ignore-path .gitignore --ext .js,.jsx",
-    "serve": "vite --port 5476",
-    "build:docs": "vite build --outDir docs",
+    "serve": "vite",
+    "build:docs": "vite build",
     "dev": "rollup -c -w",
     "build": "rollup -c",
     "test": "jest",
