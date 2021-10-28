@@ -22,7 +22,7 @@ export const joinBase = (path, base) => {
   }
 
   try {
-    return new URL(path, base);
+    return new URL(path, base).href;
   } catch {
     return path;
   }
