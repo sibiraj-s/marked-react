@@ -44,9 +44,7 @@ const cases = [
     markdown: '[Google](https://google.com)',
     html: '<p><a href="https://google.com" target="_blank">Google</a></p>',
     props: {
-      options: {
-        openLinksInNewTab: true,
-      },
+      openLinksInNewTab: true,
     },
   },
   {
@@ -54,9 +52,7 @@ const cases = [
     markdown: '[Google](https://google.com)',
     html: '<p><a href="https://google.com">Google</a></p>',
     props: {
-      options: {
-        openLinksInNewTab: false,
-      },
+      openLinksInNewTab: false,
     },
   },
   {
@@ -64,10 +60,8 @@ const cases = [
     markdown: '[Google](file)',
     html: '<p><a href="https://google.com/file">Google</a></p>',
     props: {
-      options: {
-        baseURL: 'https://google.com',
-        openLinksInNewTab: false,
-      },
+      baseURL: 'https://google.com',
+      openLinksInNewTab: false,
     },
   },
   {
@@ -80,9 +74,7 @@ const cases = [
     markdown: '![Random Image](pic.png)',
     html: '<p><img src="https://placeholder.com/pic.png" alt="Random Image"/></p>',
     props: {
-      options: {
-        baseURL: 'https://placeholder.com',
-      },
+      baseURL: 'https://placeholder.com',
     },
   },
   {
@@ -110,9 +102,7 @@ const cases = [
     markdown: '```js\nconsole.log("Hello world!")\n```',
     html: '<pre><code class="lang-js">console.log(&quot;Hello world!&quot;)</code></pre>',
     props: {
-      options: {
-        langPrefix: 'lang-',
-      },
+      langPrefix: 'lang-',
     },
   },
   {
@@ -155,10 +145,8 @@ const cases = [
     markdown: 'Hello\nWorld!\n',
     html: '<p>Hello<br/>World!</p>',
     props: {
-      options: {
-        breaks: true,
-        gfm: true,
-      },
+      breaks: true,
+      gfm: true,
     },
   },
   {
@@ -181,9 +169,7 @@ const cases = [
     markdown: '- [x] checked\n- [ ] unchecked',
     html: '<ul><li>[x] checked</li><li>[ ] unchecked</li></ul>',
     props: {
-      options: {
-        gfm: false,
-      },
+      gfm: false,
     },
   },
 ];

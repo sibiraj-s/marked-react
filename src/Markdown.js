@@ -1,17 +1,8 @@
 import { createElement, Fragment } from 'react';
 import { lexer } from 'marked';
 
-import ReactParser, { defaultParserOptions } from './ReactParser';
-
-const defaultLexerOptions = {
-  breaks: false,
-  gfm: true,
-};
-
-const defaultOptions = {
-  ...defaultLexerOptions,
-  ...defaultParserOptions,
-};
+import defaults from './defaults';
+import ReactParser from './ReactParser';
 
 const validateComponentProps = (props) => {
   if (props.value && typeof props.value !== 'string') {
@@ -26,13 +17,10 @@ const validateComponentProps = (props) => {
 const Markdown = (props) => {
   validateComponentProps(props);
 
-  // assign default options
-  const options = { ...defaultOptions, ...props.options };
-
   // lexer options
   const lexerOptions = {
-    breaks: options.breaks,
-    gfm: options.gfm,
+    breaks: props.breaks,
+    gfm: props.gfm,
   };
 
   // convert input markdown into tokens
@@ -40,9 +28,9 @@ const Markdown = (props) => {
 
   // parser options
   const parserOptions = {
-    baseURL: options.baseURL,
-    openLinksInNewTab: options.openLinksInNewTab,
-    langPrefix: options.langPrefix,
+    baseURL: props.baseURL,
+    openLinksInNewTab: props.openLinksInNewTab,
+    langPrefix: props.langPrefix,
   };
 
   const children = new ReactParser(parserOptions).parse(tokens);
@@ -50,8 +38,6 @@ const Markdown = (props) => {
   return createElement(Fragment, null, children);
 };
 
-Markdown.defaultProps = {
-  options: defaultOptions,
-};
+Markdown.defaultProps = defaults;
 
 export default Markdown;

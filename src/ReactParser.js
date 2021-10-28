@@ -1,14 +1,10 @@
 import ReactRenderer from './ReactRenderer';
 import { unescape, joinBase } from './helpers';
 
-export const defaultParserOptions = {
-  baseURL: null,
-  openLinksInNewTab: true,
-  langPrefix: 'language-',
-};
+import defaults from './defaults';
 
 class ReactParser {
-  constructor(options = defaultParserOptions) {
+  constructor(options = defaults) {
     this.options = options;
     this.renderer = new ReactRenderer();
   }

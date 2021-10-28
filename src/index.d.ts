@@ -2,16 +2,15 @@ declare module 'marked-react' {
   import React from 'react';
 
   export interface MarkdownOptions {
+    breaks?: boolean;
+    gfm?: boolean;
     baseURL?: string;
     openLinksInNewTab?: boolean;
     langPrefix?: string;
-    breaks?: boolean;
-    gfm?: boolean;
   }
 
-  interface Props {
+  interface Props extends MarkdownOptions {
     value: string;
-    options: MarkdownOptions;
   }
 
   const Markdown: React.FC<Props>;
