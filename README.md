@@ -18,13 +18,6 @@
 $ npm i marked-react
 ```
 
-If you are using `npm >=7`, peerDependencies are installed automatically. For other package managers
-you might want to install `marked` manually
-
-```bash
-$ yarn add marked marked-react
-```
-
 ### Usage
 
 ```js
