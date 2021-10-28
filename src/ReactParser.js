@@ -22,12 +22,8 @@ class ReactParser {
           return null;
         }
 
-        case 'hr': {
-          return this.renderer.hr();
-        }
-
         case 'heading': {
-          return this.renderer.heading(token.text, token.depth);
+          return this.renderer.heading(this.parseInline(token.tokens), token.depth);
         }
 
         case 'paragraph': {
@@ -91,6 +87,10 @@ class ReactParser {
           return this.renderer.table([header, body]);
         }
 
+        case 'hr': {
+          return this.renderer.hr();
+        }
+
         default: {
           console.warn(`Token with "${token.type}" type was not found`); // eslint-disable-line no-console
           return null;
@@ -106,10 +106,6 @@ class ReactParser {
       switch (token.type) {
         case 'text': {
           return this.renderer.text(unescape(token.text));
-        }
-
-        case 'escape': {
-          return this.renderer.text(token.text);
         }
 
         case 'strong': {
@@ -128,10 +124,6 @@ class ReactParser {
           return this.renderer.codespan(unescape(token.text));
         }
 
-        case 'br': {
-          return this.renderer.br();
-        }
-
         case 'link': {
           const href = joinBase(token.href, baseURL);
           return this.renderer.link(href, this.parseInline(token.tokens), openLinksInNewTab);
@@ -144,6 +136,14 @@ class ReactParser {
 
         case 'html': {
           return this.renderer.html(token.text);
+        }
+
+        case 'br': {
+          return this.renderer.br();
+        }
+
+        case 'escape': {
+          return this.renderer.text(token.text);
         }
 
         default:
