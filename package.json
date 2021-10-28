@@ -28,9 +28,8 @@
   ],
   "scripts": {
     "lint": "eslint . --ignore-path .gitignore --ext .js,.jsx",
-    "serve": "vite",
+    "dev": "vite",
     "build:docs": "vite build",
-    "dev": "rollup -c -w",
     "build": "rollup -c",
     "test": "jest",
     "prepare": "is-ci || husky install",
