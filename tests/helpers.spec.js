@@ -12,4 +12,5 @@ it('should unescape strings', () => {
   expect(unescape('&gt;')).toBe('>');
   expect(unescape('&quot;')).toBe('"');
   expect(unescape('&#39;')).toBe('\'');
+  expect(unescape('')).toBe('');
 });
