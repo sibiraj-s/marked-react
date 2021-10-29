@@ -16,7 +16,7 @@
   },
   "typings": "./src/index.d.ts",
   "files": [
-    "src/",
+    "src/index.d.ts",
     "dist/"
   ],
   "keywords": [
