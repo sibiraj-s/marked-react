@@ -30,7 +30,7 @@
   "scripts": {
     "lint": "eslint . --ignore-path .gitignore --ext .js,.jsx",
     "dev": "vite",
-    "build:docs": "vite build",
+    "build:docs": "vite build --base=/marked-react/",
     "build": "rollup -c",
     "test": "jest",
     "prepare": "is-ci || husky install",

@@ -327,4 +327,4 @@ $RECYCLE.BIN/
 # .pnp.*
 
 ### Project ###
-docs/
+demo/build
