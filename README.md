@@ -1,6 +1,6 @@
 # marked-react
 
-> Render Markdown as React components using [marked](https://marked.js.org/).
+> Render Markdown as React components using [marked].
 
 [![Tests](https://github.com/sibiraj-s/marked-react/actions/workflows/tests.yml/badge.svg)](https://github.com/sibiraj-s/marked-react/actions/workflows/tests.yml)
 [![Version](https://badgen.net/npm/v/marked-react)](https://npmjs.com/marked-react)
@@ -21,12 +21,11 @@ $ npm i marked-react
 ### Usage
 
 ```js
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
 import Markdown from 'marked-react';
 
 const rootEl = document.getElementById('root');
-
-ReactDom.render(<Markdown># Hello world!</Markdown>, rootEl);
+ReactDOM.render(<Markdown># Hello world!</Markdown>, rootEl);
 ```
 
 ### Component Props
@@ -37,3 +36,38 @@ ReactDom.render(<Markdown># Hello world!</Markdown>, rootEl);
 - **langPrefix** [`string`] - A string to prefix the className in a `<code>` block. Useful for syntax highlighting. Defaults to `language-`.
 - **breaks** [`boolean`] - Add `br` tag on single line breaks. Requires `gfm` to be `true`
 - **gfm** [`boolean`] - Use approved [Github Flavoured Markdown](https://github.github.com/gfm/)
+
+### Syntax highlight code blocks
+
+There are some awesome options available to highlight code
+
+- [react-lowlight]
+- [react-refractor]
+- [react-syntax-highlighter]
+
+An example with [react-lowlight]
+
+```js
+import ReactDOM from 'react-dom';
+import Markdown from 'marked-react';
+import Lowlight from 'react-lowlight';
+import javascript from 'highlight.js/lib/languages/javascript';
+
+Lowlight.registerLanguage('js', javascript);
+
+const renderer = {
+  code: (code, lang) => {
+    return <Lowlight language={lang} value={code} />;
+  },
+};
+
+const markdown = '# Hello world!';
+
+const rootEl = document.getElementById('root');
+ReactDOM.render(<Markdown value={markdown} renderer={markdown} />, rootEl);
+```
+
+[marked]: https://marked.js.org/
+[react-lowlight]: https://github.com/rexxars/react-lowlight
+[react-refractor]: https://github.com/rexxars/react-refractor
+[react-syntax-highlighter]: https://github.com/react-syntax-highlighter/react-syntax-highlighter
