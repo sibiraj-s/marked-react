@@ -17,6 +17,12 @@ overrides:
       - 'tests/*.js'
     env:
       jest: true
+  - files:
+      - 'scripts/*.js'
+    extends:
+      - pegasus/node
+    rules:
+      no-console: off
 
 settings:
   react:
