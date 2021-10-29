@@ -12,6 +12,8 @@
 - Uses [marked](https://marked.js.org/) to parse markdown
 - Renders actual react elements instead of using `dangerouslySetInnerHTML`
 
+[Demo]
+
 ## Installation
 
 ```bash
@@ -68,6 +70,7 @@ ReactDOM.render(<Markdown value={markdown} renderer={renderer} />, rootEl);
 ```
 
 [marked]: https://marked.js.org/
+[demo]: https://sibiraj-s.github.io/marked-react/
 [react-lowlight]: https://github.com/rexxars/react-lowlight
 [react-refractor]: https://github.com/rexxars/react-refractor
 [react-syntax-highlighter]: https://github.com/react-syntax-highlighter/react-syntax-highlighter
