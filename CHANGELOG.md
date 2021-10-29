@@ -13,6 +13,26 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v0.2.0 (2021-10-29)
+
+#### Features
+
+- render inline items inside heading ([52f9e4f](https://github.com/sibiraj-s/marked-react/commit/52f9e4f))
+- support custom renderer ([a082d26](https://github.com/sibiraj-s/marked-react/commit/a082d26))
+- add `marked` to dependencies ([9529896](https://github.com/sibiraj-s/marked-react/commit/9529896))
+
+#### Bug Fixes
+
+- fix joining URL's with relative paths ([fece177](https://github.com/sibiraj-s/marked-react/commit/fece177))
+
+#### Performance Improvements
+
+- don't create components for plain strings ([755c7af](https://github.com/sibiraj-s/marked-react/commit/755c7af))
+
+#### Breaking Changes
+
+- options are now direct props of `Markdown` component ([5b8b370](https://github.com/sibiraj-s/marked-react/commit/5b8b370))
+
 ## v0.1.2 (2021-10-27)
 
 #### Features
