@@ -64,7 +64,7 @@ const renderer = {
 const markdown = '# Hello world!';
 
 const rootEl = document.getElementById('root');
-ReactDOM.render(<Markdown value={markdown} renderer={markdown} />, rootEl);
+ReactDOM.render(<Markdown value={markdown} renderer={renderer} />, rootEl);
 ```
 
 [marked]: https://marked.js.org/
