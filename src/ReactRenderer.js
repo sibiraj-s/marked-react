@@ -15,14 +15,14 @@ class ReactRenderer {
       Object.entries(renderer).forEach(([rendererName, renderFunction]) => {
         const originalRenderFunction = this[rendererName];
 
-        if (originalRenderFunction && typeof renderFunction === 'function') {
+        if (rendererName !== 'h' && originalRenderFunction && typeof renderFunction === 'function') {
           this[rendererName] = renderFunction;
         }
       });
     }
   }
 
-  crel(el, children, props) {
+  h(el, children, props) {
     const elProps = {
       key: `marked-react-${this.elementId}`,
     };
@@ -32,80 +32,80 @@ class ReactRenderer {
   }
 
   heading(children, level) {
-    return this.crel(`h${level}`, children);
+    return this.h(`h${level}`, children);
   }
 
   paragraph(children) {
-    return this.crel('p', children);
+    return this.h('p', children);
   }
 
   link(href, text) {
     const url = joinBase(href, this.options.baseURL);
     const target = this.options.openLinksInNewTab ? '_blank' : null;
-    return this.crel('a', text, { href: url, target });
+    return this.h('a', text, { href: url, target });
   }
 
   image(href, text, title) {
     const url = joinBase(href, this.options.baseURL);
-    return this.crel('img', null, { src: url, alt: text, title });
+    return this.h('img', null, { src: url, alt: text, title });
   }
 
   codespan(code, lang) {
     const className = lang ? `${this.options.langPrefix}${lang}` : null;
-    return this.crel('code', code, { className });
+    return this.h('code', code, { className });
   }
 
   code(code, lang) {
-    return this.crel('pre', this.codespan(code, lang));
+    return this.h('pre', this.codespan(code, lang));
   }
 
   blockquote(children) {
-    return this.crel('blockquote', children);
+    return this.h('blockquote', children);
   }
 
   list(children, ordered) {
-    return this.crel(ordered ? 'ol' : 'ul', children);
+    return this.h(ordered ? 'ol' : 'ul', children);
   }
 
   listItem(children) {
-    return this.crel('li', children);
+    return this.h('li', children);
   }
 
   checkbox(checked) {
-    return this.crel('input', null, { type: 'checkbox', disabled: true, checked });
+    return this.h('input', null, { type: 'checkbox', disabled: true, checked });
   }
 
   table(children) {
-    return this.crel('table', children);
+    return this.h('table', children);
   }
 
   tableHeader(children) {
-    return this.crel('thead', children);
+    return this.h('thead', children);
   }
 
   tableBody(children) {
-    return this.crel('tbody', children);
+    return this.h('tbody', children);
   }
 
   tableRow(children) {
-    return this.crel('tr', children);
+    return this.h('tr', children);
   }
 
   tableCell(children, flags) {
     const tag = flags.header ? 'th' : 'td';
-    return this.crel(tag, children, { align: flags.align });
+    return this.h(tag, children, { align: flags.align });
   }
 
   strong(children) {
-    return this.crel('strong', children);
+    return this.h('strong', children);
   }
 
   em(children) {
-    return this.crel('em', children);
+    return this.h('em', children);
   }
 
   del(children) {
-    return this.crel('del', children);
+    return this.h('del', children);
   }
 
   text(text) {
@@ -117,11 +117,11 @@ class ReactRenderer {
   }
 
   hr() {
-    return this.crel('hr');
+    return this.h('hr');
   }
 
   br() {
-    return this.crel('br');
+    return this.h('br');
   }
 }
 
