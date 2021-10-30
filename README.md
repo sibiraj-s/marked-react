@@ -58,8 +58,8 @@ import javascript from 'highlight.js/lib/languages/javascript';
 Lowlight.registerLanguage('js', javascript);
 
 const renderer = {
-  code: (code, lang) => {
-    return <Lowlight language={lang} value={code} />;
+  code: (snippet, lang) => {
+    return <Lowlight language={lang} value={snippet} />;
   },
 };
 
