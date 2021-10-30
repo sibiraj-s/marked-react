@@ -13,6 +13,22 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v0.2.1 (2021-10-30)
+
+#### Bug Fixes
+
+- prevent renderer from invoking element factory ([2a9c7c6](https://github.com/sibiraj-s/marked-react/commit/2a9c7c6))
+- increment internal element id with renderer invokation ([c4e2139](https://github.com/sibiraj-s/marked-react/commit/c4e2139))
+
+#### Enhancements
+
+- improve trees haking with webpack ([cce1ed6](https://github.com/sibiraj-s/marked-react/commit/cce1ed6))
+
+#### Documentation
+
+- add examples for syntax highlighting in code blocks ([4d4f10b](https://github.com/sibiraj-s/marked-react/commit/4d4f10b))
+- deploy demo to Github pages ([5ab9f86](https://github.com/sibiraj-s/marked-react/commit/5ab9f86))
+
 ## v0.2.0 (2021-10-29)
 
 #### Features

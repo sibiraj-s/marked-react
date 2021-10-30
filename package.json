@@ -1,7 +1,7 @@
 {
   "name": "marked-react",
   "description": "Render Markdown as React components",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "author": "sibiraj-s",
   "license": "MIT",
