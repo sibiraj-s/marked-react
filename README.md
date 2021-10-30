@@ -43,9 +43,9 @@ ReactDOM.render(<Markdown># Hello world!</Markdown>, rootEl);
 
 There are some awesome options available to highlight code
 
+- [react-syntax-highlighter]
 - [react-lowlight]
 - [react-refractor]
-- [react-syntax-highlighter]
 
 An example with [react-lowlight]
 
@@ -63,7 +63,7 @@ const renderer = {
   },
 };
 
-const markdown = '# Hello world!';
+const markdown = 'console.log("Hello world!")';
 
 const rootEl = document.getElementById('root');
 ReactDOM.render(<Markdown value={markdown} renderer={renderer} />, rootEl);
