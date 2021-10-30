@@ -16,7 +16,10 @@ class ReactRenderer {
         const originalRenderFunction = this[rendererName];
 
         if (rendererName !== 'h' && originalRenderFunction && typeof renderFunction === 'function') {
-          this[rendererName] = renderFunction;
+          this[rendererName] = (...args) => {
+            this.elementId += 1;
+            return renderFunction.bind(this)(...args);
+          };
         }
       });
     }
