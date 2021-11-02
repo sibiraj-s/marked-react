@@ -13,6 +13,12 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v0.3.0 (2021-11-02)
+
+#### Dependency Updates
+
+- update marked to v4 ([60be0d5](https://github.com/sibiraj-s/marked-react/commit/60be0d5))
+
 ## v0.2.1 (2021-10-30)
 
 #### Bug Fixes
