@@ -41,7 +41,7 @@
     "react": "^16.8.0 || ^17.0.0"
   },
   "dependencies": {
-    "marked": "^3.0.8"
+    "marked": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
