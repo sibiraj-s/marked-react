@@ -20,7 +20,7 @@
 $ npm i marked-react
 ```
 
-### Usage
+## Usage
 
 ```js
 import ReactDOM from 'react-dom';
@@ -39,7 +39,7 @@ ReactDOM.render(<Markdown># Hello world!</Markdown>, rootEl);
 - **breaks** [`boolean`] - Add `br` tag on single line breaks. Requires `gfm` to be `true`
 - **gfm** [`boolean`] - Use approved [Github Flavoured Markdown](https://github.github.com/gfm/)
 
-### Syntax highlight code blocks
+## Syntax highlight code blocks
 
 There are some awesome options available to highlight code
 
