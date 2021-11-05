@@ -1,4 +1,4 @@
-import { joinBase, unescape } from '../src/helpers';
+import { joinBase, unescape } from '../src/helpers.js';
 
 it('should joinBase correctly', () => {
   expect(joinBase('/path', 'https://c.com')).toBe('https://c.com/path');
@@ -13,4 +13,5 @@ it('should unescape strings', () => {
   expect(unescape('&quot;')).toBe('"');
   expect(unescape('&#39;')).toBe('\'');
   expect(unescape('')).toBe('');
+  expect(unescape()).toBe('');
 });

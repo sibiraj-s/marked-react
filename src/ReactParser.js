@@ -1,7 +1,6 @@
-import ReactRenderer from './ReactRenderer';
-import { unescape } from './helpers';
-
-import defaults from './defaults';
+import ReactRenderer from './ReactRenderer.js';
+import { unescape } from './helpers.js';
+import defaults from './defaults.js';
 
 class ReactParser {
   constructor(options = defaults) {

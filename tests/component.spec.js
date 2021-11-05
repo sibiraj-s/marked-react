@@ -1,7 +1,7 @@
 import { createElement } from 'react';
-import { renderToStaticMarkup } from 'react-dom/server';
+import { renderToStaticMarkup } from 'react-dom/server.js';
 
-import Markdown from '../src';
+import Markdown from '../src/index.js';
 
 it('should render nothing if nothing is given', () => {
   const marked = createElement(Markdown);

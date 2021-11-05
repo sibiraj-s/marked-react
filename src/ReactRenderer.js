@@ -1,7 +1,7 @@
 import { createElement } from 'react';
 
-import defaults from './defaults';
-import { joinBase } from './helpers';
+import defaults from './defaults.js';
+import { joinBase } from './helpers.js';
 
 class ReactRenderer {
   elementId = 0;

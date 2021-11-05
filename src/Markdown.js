@@ -1,9 +1,9 @@
 import { createElement, Fragment } from 'react';
-import { lexer } from 'marked';
+import { Lexer } from 'marked';
 
-import defaults from './defaults';
-import ReactParser from './ReactParser';
-import ReactRenderer from './ReactRenderer';
+import defaults from './defaults.js';
+import ReactParser from './ReactParser.js';
+import ReactRenderer from './ReactRenderer.js';
 
 const validateComponentProps = (props) => {
   if (props.value && typeof props.value !== 'string') {
@@ -25,7 +25,8 @@ const Markdown = (props) => {
   };
 
   // convert input markdown into tokens
-  const tokens = lexer(props.value ?? props.children ?? '', lexerOptions);
+  const lexer = new Lexer(lexerOptions);
+  const tokens = lexer.lex(props.value ?? props.children ?? '');
 
   // parser options
   const parserOptions = {
