@@ -1,3 +1,4 @@
+import { it, expect } from '@jest/globals';
 import { joinBase, unescape } from '../src/helpers.js';
 
 it('should joinBase correctly', () => {

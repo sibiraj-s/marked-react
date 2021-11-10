@@ -13,10 +13,6 @@ rules:
 
 overrides:
   - files:
-      - 'tests/*.js'
-    env:
-      jest: true
-  - files:
       - 'scripts/*.js'
     extends:
       - pegasus/node
