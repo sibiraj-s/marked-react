@@ -10,7 +10,6 @@ extends:
 rules:
   react/react-in-jsx-scope: off
   react/prop-types: off
-  class-methods-use-this: off # TODO: Remove after pegasus update to v3
 
 overrides:
   - files:
