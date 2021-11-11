@@ -33,7 +33,7 @@
     "build:docs": "vite build --base=/marked-react/",
     "deploy:docs": "node ./scripts/deploy-pages.js",
     "build": "rollup -c",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test": "jest",
     "prepare": "is-ci || husky install",
     "prepublishOnly": "is-ci || npm run build"
   },
@@ -41,7 +41,7 @@
     "react": "^16.8.0 || ^17.0.0"
   },
   "dependencies": {
-    "marked": "^4.0.0"
+    "marked": "^4.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
