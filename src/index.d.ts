@@ -9,11 +9,11 @@ declare module 'marked-react' {
     baseURL?: string;
     openLinksInNewTab?: boolean;
     langPrefix?: string;
-    renderer: Record<string, RendererFunction>;
+    renderer?: Record<string, RendererFunction>;
   }
 
   interface Props extends MarkdownOptions {
-    value: string;
+    value?: string;
   }
 
   const Markdown: React.FC<Props>;
