@@ -13,6 +13,16 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v1.0.1 (2022-01-07)
+
+#### Bug Fixes
+
+- make `value` and `renderer` optional in typings ([861bc25](https://github.com/sibiraj-s/marked-react/commit/861bc25))
+
+#### Dependency Updates
+
+- update marked to v4.0.9 ([2951a34](https://github.com/sibiraj-s/marked-react/commit/2951a34))
+
 ## v1.0.0 (2021-11-21)
 
 #### Dependency Updates
