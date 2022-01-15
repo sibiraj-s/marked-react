@@ -13,6 +13,17 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v1.0.2 (2022-01-07)
+
+#### Dependency Updates
+
+- update marked to v4.0.10 ([c91ec6b](https://github.com/sibiraj-s/marked-react/commit/c91ec6b))
+- update devDependencies ([3cecace](https://github.com/sibiraj-s/marked-react/commit/3cecace))
+
+#### Internal
+
+- update LICENSE ([98e2357](https://github.com/sibiraj-s/marked-react/commit/98e2357))
+
 ## v1.0.1 (2022-01-07)
 
 #### Bug Fixes
