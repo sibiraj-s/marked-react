@@ -32,7 +32,7 @@ ReactDOM.render(<Markdown># Hello world!</Markdown>, rootEl);
 
 ### Component Props
 
-- **value[`string`]** - Markdown content.
+- **value**[`string`] - Markdown content.
 - **baseURL** [`string`] - A prefix url for any relative link.
 - **openLinksInNewTab** [`boolean`] - Attribute `target=_blank` will be added to link elements
 - **langPrefix** [`string`] - A string to prefix the className in a `<code>` block. Useful for syntax highlighting. Defaults to `language-`.
