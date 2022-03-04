@@ -1,6 +1,8 @@
 # Marked React - Markdown Parser for React
 
-[Marked React] lets you render [Markdown] into react without using \`dangerouslySetInnerHTML\`. Markdown is a simple text format whose goal is to be very easy to read and write, even when not converted to HTML. This demo page will let you type anything you like and see how it gets converted. Live. No more waiting around.
+[Marked React] lets you render [Markdown] into react without using [dangerouslySetInnerHTML]. It uses [marked] under the hood to parse markdown.
+
+Markdown is a simple text format whose goal is to be very easy to read and write, even when not converted to HTML. This demo page will let you type anything you like and see how it gets converted. Live. No more waiting around.
 
 ## How To Use The Demo
 
@@ -18,5 +20,7 @@ It's easy. It's not overly bloated, unlike HTML. Also, as the creator of [markdo
 > publishable as-is, as plain text, without looking like it's been marked up with tags
 > or formatting instructions.
 
+[marked react]: https://npm.im/marked-react
+[dangerouslysetinnerhtml]: https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml
 [marked]: https://github.com/markedjs/marked/
 [markdown]: http://daringfireball.net/projects/markdown/
