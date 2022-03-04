@@ -13,11 +13,16 @@ rules:
 
 overrides:
   - files:
-      - 'scripts/*.js'
+      - scripts/*.js
+      - .storybook/*.{js,cjs}
     extends:
       - pegasus/node
     rules:
       no-console: off
+  - files:
+      - '*.stories.@(js|jsx)'
+    extends:
+      - plugin:storybook/recommended
 
 settings:
   react:

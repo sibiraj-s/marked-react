@@ -1,2 +1,2 @@
-'*.{js,jsx}': eslint --fix --ignore-path .gitignore
+'*.{js,jsx,cjs}': eslint --fix
 '*.{html,css,md,ts,yaml,yml,json}': prettier --write

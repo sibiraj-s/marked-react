@@ -31,14 +31,12 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build:docs
-        env:
-          NODE_ENV: production
+        run: npm run build:storybook
 
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./demo/build
+          publish_dir: ./storybook-static
           user_name: github-actions[bot]
           user_email: github-actions[bot]@users.noreply.github.com
