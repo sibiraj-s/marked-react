@@ -3,8 +3,9 @@ import Lowlight from 'react-lowlight';
 import javascript from 'highlight.js/lib/languages/javascript';
 
 import Markdown from '../src/Markdown';
-import markdownText from './markdown.md';
-import codeblockMarkdownText from './codeblock.md';
+import swithcMarkdownText from './details/switch-component.md';
+import codeblockMarkdownText from './details/codeblock.md';
+
 import './marked.css';
 import 'highlight.js/styles/default.css';
 
@@ -29,7 +30,7 @@ export const SwitchComponents = Template.bind({});
 export const SyntaxHighlight = Template.bind({});
 
 SwitchComponents.args = {
-  value: markdownText,
+  value: swithcMarkdownText,
   renderer: {
     heading(text, level) {
       if (level === 1) {

@@ -2,3 +2,10 @@ blockquote {
   border-left: 4px solid #eee;
   padding-left: 1rem;
 }
+
+pre code:not(.hljs) {
+  display: block;
+  padding: 1rem;
+  background: #f3f3f3;
+  color: #444;
+}

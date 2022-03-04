@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Markdown from '../src/Markdown';
-import markdownText from './markdown.md';
+import markdownText from './details/default.md';
 import './marked.css';
 
 export default {
