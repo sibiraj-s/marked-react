@@ -20,8 +20,10 @@ export default {
     value: {
       description: 'Markdown content',
       control: 'text',
-      defaultValue: {
-        summary: '',
+      table: {
+        defaultValue: {
+          summary: '',
+        },
       },
     },
     renderer: {
