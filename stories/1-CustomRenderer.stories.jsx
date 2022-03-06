@@ -18,10 +18,15 @@ export default {
   component: Markdown,
   argTypes: {
     value: {
+      description: 'Markdown content',
       control: 'text',
+      defaultValue: {
+        summary: '',
+      },
     },
     renderer: {
-      control: { disable: true },
+      description: 'Custom renderer object to override default renderer',
+      control: false,
     },
   },
 };
