@@ -1,7 +1,8 @@
 import React from 'react';
 
 import Markdown from '../src/Markdown';
-import markdownText from './details/default.md';
+import markdownDetail from './details/default.md';
+import markdownCode from '!!raw-loader!./details/default-code.js';
 import './marked.css';
 
 export default {
@@ -16,7 +17,15 @@ const Template = (args) => <Markdown {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  value: markdownText,
+  value: markdownDetail,
+};
+
+Default.parameters = {
+  docs: {
+    source: {
+      code: markdownCode,
+    },
+  },
 };
 
 export const AllProps = Template.bind({});
@@ -28,3 +37,5 @@ AllProps.args = {
   baseURL: '',
   langPrefix: 'language-',
 };
+
+AllProps.parameters = Default.parameters;

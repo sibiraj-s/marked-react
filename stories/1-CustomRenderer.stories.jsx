@@ -3,11 +3,13 @@ import Lowlight from 'react-lowlight';
 import javascript from 'highlight.js/lib/languages/javascript';
 
 import Markdown from '../src/Markdown';
-import swithcMarkdownText from './details/switch-component.md';
-import codeblockMarkdownText from './details/codeblock.md';
+import switchComponentDetail from './details/switch-component.md';
+import switchComponentCode from '!!raw-loader!./details/switch-component-code.js';
+import syntaxHightlightDetail from './details/syntax-highlight.md';
+import syntaxHightlightCode from '!!raw-loader!./details/syntax-highlight-code.js';
 
 import './marked.css';
-import 'highlight.js/styles/default.css';
+import 'highlight.js/styles/atom-one-light.css';
 
 Lowlight.registerLanguage('js', javascript);
 
@@ -30,7 +32,7 @@ export const SwitchComponents = Template.bind({});
 export const SyntaxHighlight = Template.bind({});
 
 SwitchComponents.args = {
-  value: swithcMarkdownText,
+  value: switchComponentDetail,
   renderer: {
     heading(text, level) {
       if (level === 1) {
@@ -42,11 +44,27 @@ SwitchComponents.args = {
   },
 };
 
+SwitchComponents.parameters = {
+  docs: {
+    source: {
+      code: switchComponentCode,
+    },
+  },
+};
+
 SyntaxHighlight.args = {
-  value: codeblockMarkdownText,
+  value: syntaxHightlightDetail,
   renderer: {
     code(snippet, lang) {
       return <Lowlight language={lang} value={snippet} key={this.elementId} />;
+    },
+  },
+};
+
+SyntaxHighlight.parameters = {
+  docs: {
+    source: {
+      code: syntaxHightlightCode,
     },
   },
 };
