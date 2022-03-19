@@ -43,17 +43,17 @@
     "marked": "^4.0.12"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.5",
+    "@babel/core": "^7.17.8",
     "@babel/eslint-parser": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
-    "@commitlint/cli": "^16.2.1",
+    "@commitlint/cli": "^16.2.3",
     "@jest/globals": "^27.5.1",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^21.0.2",
     "@rollup/plugin-node-resolve": "^13.1.3",
-    "@storybook/addon-essentials": "^6.5.0-alpha.47",
-    "@storybook/react": "^6.5.0-alpha.47",
+    "@storybook/addon-essentials": "^6.5.0-alpha.49",
+    "@storybook/react": "^6.5.0-alpha.49",
     "babel-loader": "^8.2.3",
     "commitlint-config-non-conventional": "^1.0.1",
     "eslint": "^8.11.0",
@@ -65,11 +65,11 @@
     "husky": "^7.0.4",
     "is-ci": "^3.0.1",
     "jest": "^27.5.1",
-    "lint-staged": "12.3.5",
-    "prettier": "^2.5.1",
+    "lint-staged": "12.3.7",
+    "prettier": "^2.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-lowlight": "^3.0.0",
-    "rollup": "^2.70.0"
+    "rollup": "^2.70.1"
   }
 }
