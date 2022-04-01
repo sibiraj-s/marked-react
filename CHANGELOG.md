@@ -13,6 +13,12 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v1.1.0 (2022-04-01)
+
+#### Features
+
+- add support for react 18 ([f4f5779](https://github.com/sibiraj-s/marked-react/commit/f4f5779))
+
 ## v1.0.3 (2022-02-03)
 
 #### Dependency Updates
