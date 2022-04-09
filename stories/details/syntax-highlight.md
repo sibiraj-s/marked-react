@@ -18,8 +18,9 @@ const renderer = {
 
 const markdown = 'console.log("Hello world!")';
 
-const rootEl = document.getElementById('root');
-ReactDOM.render(<Markdown value={markdown} renderer={renderer} />, rootEl);
+const domContainer = document.getElementById('root');
+const root = ReactDOM.createRoot(domContainer);
+root.render(<Markdown value={markdown} renderer={renderer} />, rootEl);
 ```
 
 Some awesome options available to highlight code

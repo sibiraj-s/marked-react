@@ -14,5 +14,6 @@ const renderer = {
 
 const markdown = '# Hello world!';
 
-const rootEl = document.getElementById('root');
-ReactDOM.render(<Markdown value={markdown} renderer={renderer} />, rootEl);
+const domContainer = document.getElementById('root');
+const root = ReactDOM.createRoot(domContainer);
+root.render(<Markdown value={markdown} renderer={renderer} />);

@@ -25,8 +25,9 @@ $ npm i marked-react
 import ReactDOM from 'react-dom';
 import Markdown from 'marked-react';
 
-const rootEl = document.getElementById('root');
-ReactDOM.render(<Markdown># Hello world!</Markdown>, rootEl);
+const domContainer = document.getElementById('root');
+const root = ReactDOM.createRoot(domContainer);
+root.render(<Markdown># Hello world!</Markdown>);
 ```
 
 ### Component Props
@@ -58,8 +59,9 @@ const renderer = {
 
 const markdown = 'console.log("Hello world!")';
 
-const rootEl = document.getElementById('root');
-ReactDOM.render(<Markdown value={markdown} renderer={renderer} />, rootEl);
+const domContainer = document.getElementById('root');
+const root = ReactDOM.createRoot(domContainer);
+root.render(<Markdown value={markdown} renderer={renderer} />);
 ```
 
 Some awesome options available to highlight code
