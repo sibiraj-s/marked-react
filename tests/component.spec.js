@@ -1,6 +1,6 @@
 import { it, expect } from '@jest/globals';
 import { createElement } from 'react';
-import { renderToStaticMarkup } from 'react-dom/server.js';
+import { renderToStaticMarkup } from 'react-dom/server';
 
 import Markdown from '../src/index.js';
 

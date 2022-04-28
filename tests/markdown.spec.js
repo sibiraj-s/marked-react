@@ -1,6 +1,6 @@
 import { test, expect } from '@jest/globals';
 import React from 'react';
-import ReactDOMServer from 'react-dom/server.js';
+import ReactDOMServer from 'react-dom/server';
 
 import Markdown from '../src/index.js';
 
