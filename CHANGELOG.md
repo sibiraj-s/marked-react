@@ -13,6 +13,12 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v1.1.1 (2022-05-07)
+
+#### Bug Fixes
+
+- fix renderer types ([53a2ed2](https://github.com/sibiraj-s/marked-react/commit/53a2ed2))
+
 ## v1.1.0 (2022-04-01)
 
 #### Features
