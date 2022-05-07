@@ -43,20 +43,20 @@
     "marked": "^4.0.12"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.9",
+    "@babel/core": "^7.17.10",
     "@babel/eslint-parser": "^7.17.0",
-    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
     "@commitlint/cli": "^16.2.4",
-    "@jest/globals": "^28.0.2",
+    "@jest/globals": "^28.1.0",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.0",
-    "@rollup/plugin-node-resolve": "^13.2.1",
-    "@storybook/addon-essentials": "^6.5.0-beta.1",
-    "@storybook/react": "^6.5.0-beta.1",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@storybook/addon-essentials": "^6.5.0-beta.6",
+    "@storybook/react": "^6.5.0-beta.6",
     "babel-loader": "^8.2.5",
     "commitlint-config-non-conventional": "^1.0.1",
-    "eslint": "^8.14.0",
+    "eslint": "^8.15.0",
     "eslint-config-pegasus": "^3.3.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
@@ -64,12 +64,12 @@
     "highlight.js": "^11.5.1",
     "husky": "^7.0.4",
     "is-ci": "^3.0.1",
-    "jest": "^28.0.2",
+    "jest": "^28.1.0",
     "lint-staged": "12.4.1",
     "prettier": "^2.6.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-lowlight": "^3.0.0",
-    "rollup": "^2.70.2"
+    "rollup": "^2.72.0"
   }
 }
