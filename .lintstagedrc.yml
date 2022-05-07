@@ -1,2 +1,2 @@
 '*.{js,jsx,cjs}': eslint --fix
-'*.{html,css,md,ts,yaml,yml,json}': prettier --write
+'*.{html,css,md,ts,yaml,yml,json,ts}': prettier --write
