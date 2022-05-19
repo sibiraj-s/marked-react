@@ -7,4 +7,7 @@ module.exports = {
     '@storybook/addon-essentials',
   ],
   framework: '@storybook/react',
+  core: {
+    disableTelemetry: true,
+  },
 };
