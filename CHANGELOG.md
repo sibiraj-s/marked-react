@@ -13,6 +13,12 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v1.1.2 (2022-05-28)
+
+#### Bug Fixes
+
+- fix compat with new ts@4.7's node16 resolution ([e8937d8](https://github.com/sibiraj-s/marked-react/commit/e8937d8))
+
 ## v1.1.1 (2022-05-07)
 
 #### Bug Fixes
