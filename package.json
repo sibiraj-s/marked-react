@@ -12,7 +12,7 @@
   "module": "./dist/marked-react.js",
   "exports": {
     ".": {
-      "import":"./dist/marked-react.js",
+      "import": "./dist/marked-react.js",
       "require": "./dist/marked-react.cjs",
       "types": "./src/index.d.ts"
     },
@@ -47,20 +47,20 @@
     "marked": "^4.0.12"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.0",
-    "@babel/eslint-parser": "^7.17.0",
-    "@babel/preset-env": "^7.18.0",
+    "@babel/core": "^7.18.2",
+    "@babel/eslint-parser": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
-    "@commitlint/cli": "^17.0.0",
+    "@commitlint/cli": "^17.0.1",
     "@jest/globals": "^28.1.0",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
-    "@storybook/addon-essentials": "^6.5.3",
-    "@storybook/react": "^6.5.3",
+    "@storybook/addon-essentials": "^6.5.5",
+    "@storybook/react": "^6.5.5",
     "babel-loader": "^8.2.5",
     "commitlint-config-non-conventional": "^1.0.1",
-    "eslint": "^8.15.0",
+    "eslint": "^8.16.0",
     "eslint-config-pegasus": "^3.3.0",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
@@ -69,11 +69,11 @@
     "husky": "^8.0.1",
     "is-ci": "^3.0.1",
     "jest": "^28.1.0",
-    "lint-staged": "12.4.1",
+    "lint-staged": "12.4.2",
     "prettier": "^2.6.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-lowlight": "^3.0.0",
-    "rollup": "^2.74.1"
+    "rollup": "^2.75.0"
   }
 }
