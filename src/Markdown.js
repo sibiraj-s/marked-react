@@ -1,7 +1,6 @@
 import { createElement, Fragment } from 'react';
 import { Lexer } from 'marked';
 
-import defaults from './defaults.js';
 import ReactParser from './ReactParser.js';
 import ReactRenderer from './ReactRenderer.js';
 
@@ -43,6 +42,13 @@ const Markdown = (props) => {
   return createElement(Fragment, null, children);
 };
 
-Markdown.defaultProps = defaults;
+Markdown.defaultProps = {
+  breaks: false,
+  gfm: true,
+  baseURL: null,
+  openLinksInNewTab: true,
+  langPrefix: 'language-',
+  renderer: null,
+};
 
 export default Markdown;

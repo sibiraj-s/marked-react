@@ -1,27 +1,28 @@
 import { describe, expect, it } from '@jest/globals';
+
 import ReactParser from '../src/ReactParser';
+import ReactRenderer from '../src/ReactRenderer';
+
+const renderer = new ReactRenderer({
+  baseURL: null,
+  openLinksInNewTab: true,
+  langPrefix: 'language-',
+});
+
+const parser = new ReactParser({ renderer });
 
 describe('ReactParser', () => {
   it('should initialize the parser correctly', () => {
-    const parser = new ReactParser();
-
     expect(parser.parse).toBeInstanceOf(Function);
     expect(parser.parseInline).toBeInstanceOf(Function);
     expect(parser.renderer).toBeInstanceOf(Object);
   });
 
   it('should use the given renderer', () => {
-    const renderer = {};
-    const parser = new ReactParser({
-      renderer,
-    });
-
     expect(parser.renderer).toEqual(renderer);
   });
 
   it('should parse text', () => {
-    const parser = new ReactParser();
-
     const tokens = [
       {
         type: 'text',
@@ -35,8 +36,6 @@ describe('ReactParser', () => {
   });
 
   it('should parse html', () => {
-    const parser = new ReactParser();
-
     const tokens = [
       {
         type: 'html',
@@ -54,8 +53,6 @@ describe('ReactParser', () => {
   });
 
   it('should parse escape token', () => {
-    const parser = new ReactParser();
-
     const tokens = [
       {
         type: 'escape',
@@ -68,8 +65,6 @@ describe('ReactParser', () => {
   });
 
   it('should do return null for unknown tokens', () => {
-    const parser = new ReactParser();
-
     const tokens = [
       {
         type: 'unknown_token',

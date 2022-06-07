@@ -25,7 +25,9 @@ it('should prefer value over children render markdown correctly', () => {
 it('should throw error if children is not a string', () => {
   const marked = createElement(Markdown, null, 1);
 
-  expect(() => renderToStaticMarkup(marked)).toThrowError(new TypeError('[marked-react]: Expected children to be of type string but got number'));
+  expect(() => renderToStaticMarkup(marked)).toThrowError(
+    new TypeError('[marked-react]: Expected children to be of type string but got number'),
+  );
 });
 
 it('should throw error if value is not a string', () => {
@@ -38,8 +40,8 @@ it('should throw error if value is not a string', () => {
 
 it('should use custom renderer to render elements', () => {
   const renderer = {
-    heading: (node, level) => {
-      return createElement(`h${level}`, { key: 'marked-react-custom-header' }, `This is a heading: ${node}`);
+    heading: (children, level) => {
+      return createElement(`h${level}`, { key: 'marked-react-custom-header' }, `This is a heading: ${children}`);
     },
   };
 

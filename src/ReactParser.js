@@ -1,11 +1,10 @@
-import ReactRenderer from './ReactRenderer.js';
 import { unescape } from './helpers.js';
-import defaults from './defaults.js';
 
 class ReactParser {
-  constructor(options = defaults) {
-    this.options = options;
-    this.renderer = options.renderer || new ReactRenderer();
+  renderer;
+
+  constructor(options) {
+    this.renderer = options.renderer;
   }
 
   parse(tokens) {
@@ -37,7 +36,7 @@ class ReactParser {
             const listItemChildren = [];
 
             if (item.task) {
-              listItemChildren.push(this.renderer.checkbox(item.checked));
+              listItemChildren.push(this.renderer.checkbox(item.checked ?? false));
             }
 
             listItemChildren.push(this.parse(item.tokens));
@@ -66,9 +65,10 @@ class ReactParser {
 
           const bodyChilren = token.rows.map((row, index) => {
             const rowChildren = row.map((cell) => {
-              return this.renderer.tableCell(
-                this.parseInline(cell.tokens), { header: false, align: token.align[index] },
-              );
+              return this.renderer.tableCell(this.parseInline(cell.tokens), {
+                header: false,
+                align: token.align[index],
+              });
             });
 
             return this.renderer.tableRow(rowChildren);
@@ -134,9 +134,10 @@ class ReactParser {
           return this.renderer.text(token.text);
         }
 
-        default:
+        default: {
           console.warn(`Token with "${token.type}" type was not found`); // eslint-disable-line no-console
           return null;
+        }
       }
     });
   }

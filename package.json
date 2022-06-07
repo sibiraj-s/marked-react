@@ -12,13 +12,12 @@
   "module": "./dist/marked-react.js",
   "exports": {
     ".": {
-      "import": "./dist/marked-react.js",
       "require": "./dist/marked-react.cjs",
-      "types": "./src/index.d.ts"
+      "import": "./dist/marked-react.js"
     },
     "./package.json": "./package.json"
   },
-  "typings": "./src/index.d.ts",
+  "types": "./src/index.d.ts",
   "sideEffects": false,
   "files": [
     "src/index.d.ts",
