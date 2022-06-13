@@ -46,7 +46,7 @@
     "marked": "^4.0.12"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.2",
+    "@babel/core": "^7.18.5",
     "@babel/eslint-parser": "^7.18.2",
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
@@ -55,8 +55,8 @@
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
-    "@storybook/addon-essentials": "^6.5.7",
-    "@storybook/react": "^6.5.7",
+    "@storybook/addon-essentials": "^6.5.8",
+    "@storybook/react": "^6.5.8",
     "babel-loader": "^8.2.5",
     "commitlint-config-non-conventional": "^1.0.1",
     "eslint": "^8.17.0",
@@ -68,7 +68,7 @@
     "husky": "^8.0.1",
     "is-ci": "^3.0.1",
     "jest": "^28.1.1",
-    "lint-staged": "13.0.0",
+    "lint-staged": "13.0.1",
     "prettier": "^2.6.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
