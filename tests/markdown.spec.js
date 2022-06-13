@@ -1,4 +1,4 @@
-import { test, expect } from '@jest/globals';
+import { test, expect, describe } from '@jest/globals';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
@@ -175,8 +175,10 @@ const cases = [
   },
 ];
 
-test.each(cases)('should $title', ({ markdown, html, props = null }) => {
-  const marked = React.createElement(Markdown, props, markdown);
-  const result = ReactDOMServer.renderToStaticMarkup(marked);
-  expect(result).toEqual(html.trim());
+describe('MarkedReact', () => {
+  test.each(cases)('should $title', ({ markdown, html, props = null }) => {
+    const marked = React.createElement(Markdown, props, markdown);
+    const result = ReactDOMServer.renderToStaticMarkup(marked);
+    expect(result).toEqual(html.trim());
+  });
 });
