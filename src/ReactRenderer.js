@@ -48,9 +48,9 @@ class ReactRenderer {
     return this.#h('a', text, { href: url, target });
   }
 
-  image(href, text, title) {
-    const url = joinBase(href, this.options.baseURL);
-    return this.#h('img', null, { src: url, alt: text, title });
+  image(src, alt, title) {
+    const url = joinBase(src, this.options.baseURL);
+    return this.#h('img', null, { src: url, alt, title });
   }
 
   codespan(code, lang = null) {
