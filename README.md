@@ -10,6 +10,7 @@
 
 - Uses [marked](https://marked.js.org/) to parse markdown
 - Renders actual react elements instead of using `dangerouslySetInnerHTML`
+- HTML in markdown is rendered as plain text
 
 [Demo]
 
