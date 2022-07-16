@@ -50,4 +50,10 @@ describe('Markdown Component', () => {
     const html = renderToStaticMarkup(marked);
     expect(html).toBe('<h1>This is a heading: Hello World!</h1>');
   });
+
+  it('should use parse inline markdown', () => {
+    const marked = createElement(Markdown, { value: 'Hello World!', isInline: true });
+    const html = renderToStaticMarkup(marked);
+    expect(html).toBe('Hello World!');
+  });
 });

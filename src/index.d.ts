@@ -2,6 +2,7 @@ declare module 'marked-react' {
   import { ReactElement, FC, ReactNode } from 'react';
 
   export interface MarkdownOptions {
+    isInline?: boolean;
     breaks?: boolean;
     gfm?: boolean;
     baseURL?: string;

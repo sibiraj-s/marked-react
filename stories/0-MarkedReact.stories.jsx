@@ -87,3 +87,11 @@ AllProps.args = {
 };
 
 AllProps.parameters = Default.parameters;
+
+export const InlineMarkdown = Template.bind({});
+InlineMarkdown.args = {
+  value: 'Hello world!',
+  isInline: true,
+};
+
+InlineMarkdown.parameters = Default.parameters;

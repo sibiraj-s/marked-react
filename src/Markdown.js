@@ -24,8 +24,10 @@ const Markdown = (props) => {
   };
 
   // convert input markdown into tokens
-  const lexer = new Lexer(lexerOptions);
-  const tokens = lexer.lex(props.value ?? props.children ?? '');
+  const markdownString = props.value ?? props.children ?? '';
+  const tokens = props.isInline
+    ? Lexer.lexInline(markdownString, lexerOptions)
+    : Lexer.lex(markdownString, lexerOptions);
 
   // parser options
   const parserOptions = {
@@ -37,12 +39,16 @@ const Markdown = (props) => {
     }),
   };
 
-  const children = new ReactParser(parserOptions).parse(tokens);
+  const parser = new ReactParser(parserOptions);
+  const children = props.isInline
+    ? parser.parseInline(tokens)
+    : parser.parse(tokens);
 
   return createElement(Fragment, null, children);
 };
 
 Markdown.defaultProps = {
+  isInline: false,
   breaks: false,
   gfm: true,
   baseURL: null,
