@@ -13,6 +13,12 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v1.2.0 (2022-07-16)
+
+#### Features
+
+- support parsing inline markdown ([08dbf23](https://github.com/sibiraj-s/marked-react/commit/08dbf23))
+
 ## v1.1.2 (2022-05-28)
 
 #### Bug Fixes
