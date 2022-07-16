@@ -39,6 +39,7 @@ root.render(<Markdown># Hello world!</Markdown>);
 - **langPrefix** [`string`] - A string to prefix the className in a `<code>` block. Useful for syntax highlighting. Defaults to `language-`.
 - **breaks** [`boolean`] - Add `br` tag on single line breaks. Requires `gfm` to be `true`
 - **gfm** [`boolean`] - Use approved [Github Flavoured Markdown](https://github.github.com/gfm/)
+- **isInline**[`boolean`] - Parse [inline](https://marked.js.org/using_advanced#inline) markdown.
 
 ## Syntax highlight code blocks
 
