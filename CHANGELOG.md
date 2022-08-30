@@ -13,6 +13,13 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v1.3.0 (2022-08-30)
+
+#### Features
+
+- port to typescript ([40630ca](https://github.com/sibiraj-s/marked-react/commit/40630ca))
+- fix ReactRenderer types ([c9be9fb](https://github.com/sibiraj-s/marked-react/commit/c9be9fb))
+
 ## v1.2.0 (2022-07-16)
 
 #### Features
