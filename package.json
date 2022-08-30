@@ -17,12 +17,8 @@
     },
     "./package.json": "./package.json"
   },
-  "types": "./src/index.d.ts",
+  "types": "./dist/index.d.ts",
   "sideEffects": false,
-  "files": [
-    "src/index.d.ts",
-    "dist/"
-  ],
   "keywords": [
     "react",
     "markdown",
@@ -30,8 +26,12 @@
     "markedjs",
     "no dangerouslySetInnerHTML"
   ],
+  "files": [
+    "src/index.d.ts",
+    "dist/"
+  ],
   "scripts": {
-    "lint": "eslint . --ignore-path .gitignore --ext .js,.jsx",
+    "lint": "eslint . --ignore-path .gitignore --ext .js,.jsx,.ts,.tsx",
     "build": "rollup -c",
     "storybook": "start-storybook -p 7007",
     "build:storybook": "build-storybook",
@@ -43,21 +43,19 @@
     "react": "^16.8.0 || >=17.0.0"
   },
   "dependencies": {
+    "@types/marked": "^4.0.3",
     "marked": "^4.0.12"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.10",
-    "@babel/eslint-parser": "^7.18.9",
-    "@babel/preset-env": "^7.18.10",
-    "@babel/preset-react": "^7.18.6",
     "@commitlint/cli": "^17.0.3",
     "@jest/globals": "^28.1.3",
-    "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.4",
     "@storybook/addon-essentials": "^6.5.10",
     "@storybook/react": "^6.5.10",
-    "babel-loader": "^8.2.5",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
     "commitlint-config-non-conventional": "^1.0.1",
     "eslint": "^8.22.0",
     "eslint-config-pegasus": "^3.4.1",
@@ -73,6 +71,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-lowlight": "^3.0.0",
-    "rollup": "^2.78.0"
+    "rollup": "^2.78.1",
+    "ts-jest": "^28.0.8",
+    "typescript": "^4.7.4"
   }
 }

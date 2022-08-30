@@ -1,4 +1,5 @@
-import React, { createElement } from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { createElement } from 'react';
 import Lowlight from 'react-lowlight';
 import javascript from 'highlight.js/lib/languages/javascript';
 
@@ -31,9 +32,9 @@ export default {
       control: false,
     },
   },
-};
+} as ComponentMeta<typeof Markdown>;
 
-const Template = (args) => <Markdown {...args} />;
+const Template:ComponentStory<typeof Markdown> = (args) => <Markdown {...args} />;
 
 export const SwitchComponents = Template.bind({});
 export const SyntaxHighlight = Template.bind({});

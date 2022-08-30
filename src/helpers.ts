@@ -1,4 +1,4 @@
-const htmlUnescapes = {
+const htmlUnescapes: Record<string, string> = {
   '&amp;': '&',
   '&lt;': '<',
   '&gt;': '>',
@@ -10,13 +10,11 @@ const htmlUnescapes = {
 const reEscapedHtml = /&(?:amp|lt|gt|quot|#(?:0+)?39);/g;
 const reHasEscapedHtml = RegExp(reEscapedHtml.source);
 
-export const unescape = (string = '') => {
-  return reHasEscapedHtml.test(string)
-    ? string.replace(reEscapedHtml, (entity) => htmlUnescapes[entity] || "'")
-    : string;
+export const unescape = (str = '') => {
+  return reHasEscapedHtml.test(str) ? str.replace(reEscapedHtml, (entity) => htmlUnescapes[entity] || "'") : str;
 };
 
-export const joinBase = (path, base) => {
+export const joinBase = (path: string, base?: string) => {
   if (!base) {
     return path;
   }

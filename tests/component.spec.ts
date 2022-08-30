@@ -1,12 +1,13 @@
 import { it, expect, describe } from '@jest/globals';
-import { createElement } from 'react';
+import { createElement, ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
-import Markdown from '../src/index.js';
+import Markdown from '../src/index';
+import { CustomReactRenderer, HeadingLevels } from '../src/ReactRenderer';
 
 describe('Markdown Component', () => {
   it('should render nothing if nothing is given', () => {
-    const marked = createElement(Markdown);
+    const marked = createElement(Markdown, null, '');
     const html = renderToStaticMarkup(marked);
     expect(html).toBe('');
   });
@@ -32,7 +33,7 @@ describe('Markdown Component', () => {
   });
 
   it('should throw error if value is not a string', () => {
-    const marked = createElement(Markdown, { value: 1 });
+    const marked = createElement(Markdown, { value: 1 as any });
 
     expect(() => {
       renderToStaticMarkup(marked);
@@ -40,8 +41,8 @@ describe('Markdown Component', () => {
   });
 
   it('should use custom renderer to render elements', () => {
-    const renderer = {
-      heading: (children, level) => {
+    const renderer: CustomReactRenderer = {
+      heading(children: ReactNode, level: HeadingLevels) {
         return createElement(`h${level}`, { key: 'marked-react-custom-header' }, `This is a heading: ${children}`);
       },
     };

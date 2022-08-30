@@ -1,10 +1,10 @@
 import { describe, expect, it } from '@jest/globals';
 
-import ReactParser from '../src/ReactParser';
+import ReactParser, { Tokens } from '../src/ReactParser';
 import ReactRenderer from '../src/ReactRenderer';
 
 const renderer = new ReactRenderer({
-  baseURL: null,
+  baseURL: undefined,
   openLinksInNewTab: true,
   langPrefix: 'language-',
 });
@@ -30,7 +30,7 @@ describe('ReactParser', () => {
       },
     ];
 
-    const parsed = parser.parse(tokens);
+    const parsed = parser.parse(tokens as Tokens);
     expect(parsed.length).toBe(1);
     expect(parsed[0]).toEqual('Hello world!');
   });
@@ -43,11 +43,11 @@ describe('ReactParser', () => {
       },
     ];
 
-    const parsed = parser.parse(tokens);
+    const parsed = parser.parse(tokens as Tokens);
     expect(parsed.length).toBe(1);
     expect(parsed[0]).toEqual('Hello world!');
 
-    const inlineParsed = parser.parseInline(tokens);
+    const inlineParsed = parser.parseInline(tokens as Tokens);
     expect(inlineParsed.length).toBe(1);
     expect(inlineParsed[0]).toEqual('Hello world!');
   });
@@ -59,7 +59,7 @@ describe('ReactParser', () => {
         text: '\\',
       },
     ];
-    const inlineParsed = parser.parseInline(tokens);
+    const inlineParsed = parser.parseInline(tokens as Tokens);
     expect(inlineParsed.length).toBe(1);
     expect(inlineParsed[0]).toEqual('\\');
   });
@@ -71,9 +71,9 @@ describe('ReactParser', () => {
       },
     ];
 
-    const parsed = parser.parse(tokens);
+    const parsed = parser.parse(tokens as Tokens);
     expect(parsed[0]).toEqual(null);
-    const inlineParsed = parser.parseInline(tokens);
+    const inlineParsed = parser.parseInline(tokens as Tokens);
     expect(inlineParsed[0]).toEqual(null);
   });
 });

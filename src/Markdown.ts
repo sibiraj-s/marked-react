@@ -1,10 +1,21 @@
 import { createElement, Fragment } from 'react';
-import { Lexer } from 'marked';
+import { Lexer, marked } from 'marked';
 
-import ReactParser from './ReactParser.js';
-import ReactRenderer from './ReactRenderer.js';
+import ReactParser from './ReactParser';
+import ReactRenderer, { ReactRendererOptions } from './ReactRenderer';
 
-const validateComponentProps = (props) => {
+interface LexerOptions {
+  breaks?: marked.MarkedOptions['breaks'];
+  gfm?: marked.MarkedOptions['gfm'];
+}
+
+export interface MarkdownProps extends ReactRendererOptions, LexerOptions {
+  value?: string;
+  children?: string;
+  isInline?: boolean;
+}
+
+const validateComponentProps = (props: MarkdownProps) => {
   if (props.value && typeof props.value !== 'string') {
     throw new TypeError(`[marked-react]: Expected value to be of type string but got ${typeof props.value}`);
   }
@@ -14,7 +25,7 @@ const validateComponentProps = (props) => {
   }
 };
 
-const Markdown = (props) => {
+const Markdown = (props: MarkdownProps) => {
   validateComponentProps(props);
 
   // lexer options
@@ -40,9 +51,7 @@ const Markdown = (props) => {
   };
 
   const parser = new ReactParser(parserOptions);
-  const children = props.isInline
-    ? parser.parseInline(tokens)
-    : parser.parse(tokens);
+  const children = props.isInline ? parser.parseInline(tokens) : parser.parse(tokens);
 
   return createElement(Fragment, null, children);
 };
@@ -51,10 +60,10 @@ Markdown.defaultProps = {
   isInline: false,
   breaks: false,
   gfm: true,
-  baseURL: null,
+  baseURL: undefined,
   openLinksInNewTab: true,
   langPrefix: 'language-',
-  renderer: null,
+  renderer: undefined,
 };
 
 export default Markdown;

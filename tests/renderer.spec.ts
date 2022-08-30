@@ -1,10 +1,18 @@
 import { describe, expect, it } from '@jest/globals';
-import { createElement } from 'react';
+import { createElement, ReactElement } from 'react';
 import ReactDOMServer from 'react-dom/server';
 
-import ReactRenderer from '../src/ReactRenderer.js';
+import ReactRenderer, { RendererMethods } from '../src/ReactRenderer';
 
-const cases = [
+interface Case {
+  title: string;
+  method: RendererMethods;
+  args: any[];
+  html: string;
+  options?: Record<string, any>;
+}
+
+const cases: Case[] = [
   {
     title: 'h1 tag',
     method: 'heading',
@@ -179,8 +187,8 @@ describe('ReactRenderer', () => {
   it.each(cases)('should render $title correctly', ({ method, html, args, options = {} }) => {
     const renderer = new ReactRenderer(options);
 
-    const rendered = renderer[method](...args);
-    const result = ReactDOMServer.renderToStaticMarkup(rendered);
+    const rendered = (renderer as any)[method](...args);
+    const result = ReactDOMServer.renderToStaticMarkup(rendered as ReactElement);
     expect(result).toEqual(html.trim());
   });
 
@@ -197,12 +205,14 @@ describe('ReactRenderer', () => {
   });
 
   it('should do nothing for unknown renderer methods', () => {
+    const customRenderer = {
+      unknown: () => createElement('a'),
+    };
+
     const renderer = new ReactRenderer({
-      renderer: {
-        unknown: () => createElement('a'),
-      },
+      renderer: customRenderer as any,
     });
 
-    expect(() => renderer.unknown()).toThrow();
+    expect(() => (renderer as any).unknown()).toThrow();
   });
 });

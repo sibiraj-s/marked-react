@@ -1,4 +1,4 @@
-import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import Markdown from '../src/Markdown';
 import markdownDetail from './details/default.md';
@@ -59,9 +59,9 @@ export default {
       },
     },
   },
-};
+} as ComponentMeta<typeof Markdown>;
 
-const Template = (args) => <Markdown {...args} />;
+const Template: ComponentStory<typeof Markdown> = (args) => <Markdown {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

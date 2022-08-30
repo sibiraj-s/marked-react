@@ -1,13 +1,23 @@
-import { unescape } from './helpers.js';
+import { unescape } from './helpers';
+import { marked } from 'marked';
+
+import ReactRenderer, { HeadingLevels } from './ReactRenderer';
+import { ReactNode } from 'react';
+
+interface ReactParserOptions {
+  renderer: ReactRenderer;
+}
+
+export type Tokens = marked.Token[] | marked.TokensList;
 
 class ReactParser {
-  renderer;
+  renderer: ReactRenderer;
 
-  constructor(options) {
+  constructor(options: ReactParserOptions) {
     this.renderer = options.renderer;
   }
 
-  parse(tokens) {
+  parse(tokens: Tokens): ReactNode[] {
     return tokens.map((token) => {
       switch (token.type) {
         case 'space': {
@@ -15,7 +25,8 @@ class ReactParser {
         }
 
         case 'heading': {
-          return this.renderer.heading(this.parseInline(token.tokens), token.depth);
+          const level = token.depth as HeadingLevels;
+          return this.renderer.heading(this.parseInline(token.tokens), level);
         }
 
         case 'paragraph': {
@@ -23,7 +34,8 @@ class ReactParser {
         }
 
         case 'text': {
-          return token.tokens ? this.parseInline(token.tokens) : token.text;
+          const textTokens = (token as marked.Tokens.Text).tokens;
+          return textTokens ? this.parseInline(textTokens) : token.text;
         }
 
         case 'blockquote': {
@@ -91,7 +103,7 @@ class ReactParser {
     });
   }
 
-  parseInline(tokens) {
+  parseInline(tokens: Tokens): ReactNode[] {
     return tokens.map((token) => {
       switch (token.type) {
         case 'text': {

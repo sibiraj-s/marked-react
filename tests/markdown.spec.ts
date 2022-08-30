@@ -2,7 +2,7 @@ import { test, expect, describe } from '@jest/globals';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
-import Markdown from '../src/index.js';
+import Markdown from '../src/index';
 
 const cases = [
   {
