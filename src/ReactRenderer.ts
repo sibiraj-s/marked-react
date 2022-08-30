@@ -44,8 +44,6 @@ class ReactRenderer {
         };
       });
     }
-
-    Object.freeze(this);
   }
 
   #h<T extends ElementType>(el: T, children: ReactNode = null, props = {}): ReactElement {
