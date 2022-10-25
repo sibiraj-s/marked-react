@@ -43,8 +43,8 @@
     "react": "^16.8.0 || >=17.0.0"
   },
   "dependencies": {
-    "@types/marked": "^4.0.3",
-    "marked": "^4.0.12"
+    "@types/marked": "^4.0.7",
+    "marked": "^4.1.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
