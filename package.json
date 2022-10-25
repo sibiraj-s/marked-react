@@ -49,9 +49,9 @@
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@jest/globals": "^29.2.2",
-    "@rollup/plugin-commonjs": "^22.0.2",
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "@rollup/plugin-typescript": "^8.4.0",
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^9.0.2",
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/react": "^6.5.13",
     "@types/react": "^18.0.22",
@@ -71,7 +71,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-lowlight": "^3.0.0",
-    "rollup": "^2.78.1",
+    "rollup": "^3.2.3",
     "ts-jest": "^29.0.3",
     "typescript": "^4.8.4"
   }
