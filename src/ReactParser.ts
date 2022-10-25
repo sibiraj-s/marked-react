@@ -75,8 +75,8 @@ class ReactParser {
           const headerRow = this.renderer.tableRow(headerCells);
           const header = this.renderer.tableHeader(headerRow);
 
-          const bodyChilren = token.rows.map((row, index) => {
-            const rowChildren = row.map((cell) => {
+          const bodyChilren = token.rows.map((row) => {
+            const rowChildren = row.map((cell, index) => {
               return this.renderer.tableCell(this.parseInline(cell.tokens), {
                 header: false,
                 align: token.align[index],
