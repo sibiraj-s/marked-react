@@ -13,6 +13,18 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v1.3.1 (2022-10-25)
+
+#### Bug Fixes
+
+- Fix alignment in table cells ([2552244](https://github.com/sibiraj-s/marked-react/commit/2552244))
+
+#### Dependency Updates
+
+- Update marked to v4.1.1 ([33ea78a](https://github.com/sibiraj-s/marked-react/commit/33ea78a))
+- Update typescript to v4.8.4 ([f8bef5c](https://github.com/sibiraj-s/marked-react/commit/f8bef5c))
+- Update rollup to v3 ([df6cb0e](https://github.com/sibiraj-s/marked-react/commit/df6cb0e))
+
 ## v1.3.0 (2022-08-30)
 
 #### Features
