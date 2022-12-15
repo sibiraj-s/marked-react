@@ -1,5 +1,5 @@
 const { mergeConfig } = require('vite');
-const pkgJSON = require('../package.json');
+const pkgJson = require('../package.json');
 
 module.exports = {
   stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -11,9 +11,13 @@ module.exports = {
   core: {
     disableTelemetry: true,
   },
-  viteFinal: (config) => {
-    return mergeConfig(config, {
-      base: `/${pkgJSON.name}/`,
-    });
+  viteFinal(config, { configType }) {
+    const customConfig = {};
+
+    if (configType === 'PRODUCTION') {
+      customConfig.base = `/${pkgJson.name}/`;
+    }
+
+    return mergeConfig(config, customConfig);
   },
 };
