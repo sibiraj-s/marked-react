@@ -1,11 +1,11 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import Markdown from '../src/Markdown';
-import markdownDetail from './details/default.md';
-import markdownCode from '!!raw-loader!./details/default-code.js';
+import markdownDetail from './details/default.md?raw';
+import markdownCode from './details/default-code.js?raw';
 import './marked.css';
 
-export default {
+const meta: Meta<typeof Markdown> = {
   title: 'Marked React',
   component: Markdown,
   argTypes: {
@@ -59,39 +59,41 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Markdown>;
-
-const Template: ComponentStory<typeof Markdown> = (args) => <Markdown {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  value: markdownDetail,
 };
 
-Default.parameters = {
-  docs: {
-    source: {
-      code: markdownCode,
+export default meta;
+type Story = StoryObj<typeof Markdown>;
+
+export const Default: Story = {
+  args: {
+    value: markdownDetail,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: markdownCode,
+      },
     },
+  },
+  render: (args) => <Markdown {...args} />,
+};
+
+export const AllProps: Story = {
+  ...Default,
+  args: {
+    value: '# Hello world!',
+    openLinksInNewTab: true,
+    breaks: false,
+    gfm: true,
+    baseURL: '',
+    langPrefix: 'language-',
   },
 };
 
-export const AllProps = Template.bind({});
-AllProps.args = {
-  value: '# Hello world!',
-  openLinksInNewTab: true,
-  breaks: false,
-  gfm: true,
-  baseURL: '',
-  langPrefix: 'language-',
+export const InlineMarkdown:Story = {
+  ...Default,
+  args: {
+    value: 'Hello world!',
+    isInline: true,
+  },
 };
-
-AllProps.parameters = Default.parameters;
-
-export const InlineMarkdown = Template.bind({});
-InlineMarkdown.args = {
-  value: 'Hello world!',
-  isInline: true,
-};
-
-InlineMarkdown.parameters = Default.parameters;

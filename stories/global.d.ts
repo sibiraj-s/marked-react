@@ -1,6 +1,6 @@
 declare module '*.md';
 
-declare module '!!raw-loader!*' {
+declare module '*?raw' {
   const contents: string;
   export = contents;
 }
