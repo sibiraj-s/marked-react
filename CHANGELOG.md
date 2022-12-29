@@ -13,6 +13,12 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v1.3.2 (2022-12-29)
+
+#### Bug Fixes
+
+- Disable sourcemaps ([3e1edfd](https://github.com/sibiraj-s/marked-react/commit/3e1edfd))
+
 ## v1.3.1 (2022-10-25)
 
 #### Bug Fixes
