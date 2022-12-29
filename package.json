@@ -27,7 +27,6 @@
     "no dangerouslySetInnerHTML"
   ],
   "files": [
-    "src/index.d.ts",
     "dist/"
   ],
   "scripts": {
