@@ -13,7 +13,8 @@
   "exports": {
     ".": {
       "require": "./dist/marked-react.cjs",
-      "import": "./dist/marked-react.js"
+      "import": "./dist/marked-react.js",
+      "types": "./dist/index.d.ts"
     },
     "./package.json": "./package.json"
   },
