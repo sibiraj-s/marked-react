@@ -12,9 +12,9 @@
   "module": "./dist/marked-react.js",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "require": "./dist/marked-react.cjs",
-      "import": "./dist/marked-react.js",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/marked-react.js"
     },
     "./package.json": "./package.json"
   },
