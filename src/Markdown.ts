@@ -3,6 +3,7 @@ import { Lexer, marked } from 'marked';
 
 import ReactParser from './ReactParser';
 import ReactRenderer, { ReactRendererOptions } from './ReactRenderer';
+import { mergeProps } from './helpers'
 
 interface LexerOptions {
   breaks?: marked.MarkedOptions['breaks'];
@@ -25,7 +26,18 @@ const validateComponentProps = (props: MarkdownProps) => {
   }
 };
 
-const Markdown = (props: MarkdownProps) => {
+const defaultProps = {
+  isInline: false,
+  breaks: false,
+  gfm: true,
+  baseURL: undefined,
+  openLinksInNewTab: true,
+  langPrefix: 'language-',
+  renderer: undefined,
+}
+
+const Markdown = (p: MarkdownProps) => {
+  const props = mergeProps(defaultProps, p);
   validateComponentProps(props);
 
   // lexer options
@@ -54,16 +66,6 @@ const Markdown = (props: MarkdownProps) => {
   const children = props.isInline ? parser.parseInline(tokens) : parser.parse(tokens);
 
   return createElement(Fragment, null, children);
-};
-
-Markdown.defaultProps = {
-  isInline: false,
-  breaks: false,
-  gfm: true,
-  baseURL: undefined,
-  openLinksInNewTab: true,
-  langPrefix: 'language-',
-  renderer: undefined,
 };
 
 export default Markdown;
