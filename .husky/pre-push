@@ -1,4 +1,7 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm run test
+npm run test -- --run
+
+echo "\npublint:"
+npx --no -- publint
