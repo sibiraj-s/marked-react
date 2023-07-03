@@ -1,4 +1,4 @@
-import { describe, expect, it } from '@jest/globals';
+import { describe, expect, it } from 'vitest';
 import { createElement, ReactElement } from 'react';
 import ReactDOMServer from 'react-dom/server';
 

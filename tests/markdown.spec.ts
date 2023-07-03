@@ -1,4 +1,4 @@
-import { test, expect, describe } from '@jest/globals';
+import { test, expect, describe } from 'vitest';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
@@ -66,12 +66,12 @@ const cases = [
     },
   },
   {
-    title: 'should render images',
+    title: 'render images',
     markdown: '![Random Image](https://placeholder.com/pic.png)',
     html: '<p><img src="https://placeholder.com/pic.png" alt="Random Image"/></p>',
   },
   {
-    title: 'should render image src with baseURL',
+    title: 'render image src with baseURL',
     markdown: '![Random Image](pic.png)',
     html: '<p><img src="https://placeholder.com/pic.png" alt="Random Image"/></p>',
     props: {
@@ -107,42 +107,42 @@ const cases = [
     },
   },
   {
-    title: 'should render strong',
+    title: 'render strong',
     markdown: '**hey there**',
     html: '<p><strong>hey there</strong></p>',
   },
   {
-    title: 'should render em',
+    title: 'render em',
     markdown: '*hey there*',
     html: '<p><em>hey there</em></p>',
   },
   {
-    title: 'should render del',
+    title: 'render del',
     markdown: '~hey there~',
     html: '<p><del>hey there</del></p>',
   },
   {
-    title: 'should render codespan',
+    title: 'render codespan',
     markdown: '`hey there`',
     html: '<p><code>hey there</code></p>',
   },
   {
-    title: 'should html without any changes',
+    title: 'html without any changes',
     markdown: '<div>hello world!</div>',
     html: '&lt;div&gt;hello world!&lt;/div&gt;',
   },
   {
-    title: 'should render horizontal rule',
+    title: 'render horizontal rule',
     markdown: '---',
     html: '<hr/>',
   },
   {
-    title: 'should render table',
+    title: 'render table',
     markdown: '|Head|\n|--|\n|Body|',
     html: '<table><thead><tr><th>Head</th></tr></thead><tbody><tr><td>Body</td></tr></tbody></table>',
   },
   {
-    title: 'should render br tag',
+    title: 'render br tag',
     markdown: 'Hello\nWorld!\n',
     html: '<p>Hello<br/>World!</p>',
     props: {
@@ -151,22 +151,22 @@ const cases = [
     },
   },
   {
-    title: 'should render nothing for just line breaks',
+    title: 'render nothing for just line breaks',
     markdown: '\n\n\n',
     html: '',
   },
   {
-    title: 'should parse images inside links',
+    title: 'parse images inside links',
     markdown: '[![Tests](https://p.com/i.png)](https://p.com)',
     html: '<p><a href="https://p.com" target="_blank"><img src="https://p.com/i.png" alt="Tests"/></a></p>',
   },
   {
-    title: 'should render task list correctly',
+    title: 'render task list correctly',
     markdown: '- [x] checked\n- [ ] unchecked',
     html: '<ul><li><input type="checkbox" disabled="" checked=""/>checked</li><li><input type="checkbox" disabled=""/>unchecked</li></ul>',
   },
   {
-    title: 'should not render task list with gfm disabled',
+    title: 'not render task list with gfm disabled',
     markdown: '- [x] checked\n- [ ] unchecked',
     html: '<ul><li>[x] checked</li><li>[ ] unchecked</li></ul>',
     props: {
