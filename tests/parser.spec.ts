@@ -1,4 +1,4 @@
-import { describe, expect, it } from '@jest/globals';
+import { describe, expect, it } from 'vitest';
 
 import ReactParser, { Tokens } from '../src/ReactParser';
 import ReactRenderer from '../src/ReactRenderer';
