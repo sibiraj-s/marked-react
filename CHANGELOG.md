@@ -13,6 +13,20 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v1.4.0 (2023-07-03)
+
+#### Bug Fixes
+
+- remove deprecated defaultProps ([31ae07d](https://github.com/sibiraj-s/marked-react/commit/31ae07d))
+
+#### Features
+
+- export ReactParser and ReactRenderer ([4646dde](https://github.com/sibiraj-s/marked-react/commit/4646dde))
+
+#### Internal
+
+- add npm package provenance ([223af24](https://github.com/sibiraj-s/marked-react/commit/223af24))
+
 ## v1.3.2 (2022-12-29)
 
 #### Bug Fixes
