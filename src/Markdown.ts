@@ -25,7 +25,18 @@ const validateComponentProps = (props: MarkdownProps) => {
   }
 };
 
-const Markdown = (props: MarkdownProps) => {
+const defaultProps = {
+  isInline: false,
+  breaks: false,
+  gfm: true,
+  baseURL: undefined,
+  openLinksInNewTab: true,
+  langPrefix: 'language-',
+  renderer: undefined,
+};
+
+const Markdown = (incomingProps: MarkdownProps) => {
+  const props = { ...defaultProps, ...incomingProps };
   validateComponentProps(props);
 
   // lexer options
@@ -54,16 +65,6 @@ const Markdown = (props: MarkdownProps) => {
   const children = props.isInline ? parser.parseInline(tokens) : parser.parse(tokens);
 
   return createElement(Fragment, null, children);
-};
-
-Markdown.defaultProps = {
-  isInline: false,
-  breaks: false,
-  gfm: true,
-  baseURL: undefined,
-  openLinksInNewTab: true,
-  langPrefix: 'language-',
-  renderer: undefined,
 };
 
 export default Markdown;
