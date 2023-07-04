@@ -36,7 +36,7 @@
     "build:storybook": "storybook build",
     "test": "vitest --coverage",
     "prepare": "is-ci || husky install",
-    "prepublishOnly": "is-ci || publint && npm run build"
+    "prepublishOnly": "is-ci || (npm run build && publint)"
   },
   "peerDependencies": {
     "react": "^16.8.0 || >=17.0.0"
