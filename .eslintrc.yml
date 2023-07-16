@@ -23,13 +23,11 @@ overrides:
       - .storybook/*.{js,cjs}
     extends:
       - pegasus/node
-    rules:
-      no-console: off
   - files:
       - '*.stories.@(js|jsx|ts|tsx)'
     extends:
-      - plugin:storybook/recommended
       - pegasus/typescript
+      - plugin:storybook/recommended
     parserOptions:
       project: tsconfig.json
 
