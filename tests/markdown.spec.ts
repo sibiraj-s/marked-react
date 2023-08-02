@@ -94,7 +94,7 @@ const cases = [
     html: '<pre><code>&lt;script&gt;console.log(&quot;Hello&quot;)&lt;/script&gt;</code></pre>',
   },
   {
-    title: 'render codeblocks with lang code',
+    title: 'render codeblocks with default lang prefix',
     markdown: '```js\nconsole.log("Hello world!")\n```',
     html: '<pre><code class="language-js">console.log(&quot;Hello world!&quot;)</code></pre>',
   },

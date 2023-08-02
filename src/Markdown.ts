@@ -1,18 +1,16 @@
-import { createElement, Fragment } from 'react';
-import { Lexer, marked } from 'marked';
+import { createElement, Fragment, useRef } from 'react';
+import { Marked, MarkedOptions } from 'marked';
 
 import ReactParser from './ReactParser';
 import ReactRenderer, { ReactRendererOptions } from './ReactRenderer';
 
-interface LexerOptions {
-  breaks?: marked.MarkedOptions['breaks'];
-  gfm?: marked.MarkedOptions['gfm'];
-}
+type LexerOptions = Pick<MarkedOptions, 'breaks' | 'gfm'>;
 
 export interface MarkdownProps extends ReactRendererOptions, LexerOptions {
   value?: string;
   children?: string;
   isInline?: boolean;
+  instance?: Marked;
 }
 
 const validateComponentProps = (props: MarkdownProps) => {
@@ -35,34 +33,37 @@ const defaultProps = {
   renderer: undefined,
 };
 
-const Markdown = (incomingProps: MarkdownProps) => {
-  const props = { ...defaultProps, ...incomingProps };
+const Markdown = (props: MarkdownProps) => {
   validateComponentProps(props);
+
+  const options = { ...defaultProps, ...props };
+  const { current: marked } = useRef<Marked>(options.instance ?? new Marked());
 
   // lexer options
   const lexerOptions = {
-    breaks: props.breaks,
-    gfm: props.gfm,
+    breaks: options.breaks,
+    gfm: options.gfm,
   };
 
   // convert input markdown into tokens
-  const markdownString = props.value ?? props.children ?? '';
-  const tokens = props.isInline
-    ? Lexer.lexInline(markdownString, lexerOptions)
-    : Lexer.lex(markdownString, lexerOptions);
+  const markdownString = options.value ?? options.children ?? '';
+
+  const tokens = options.isInline
+    ? marked.Lexer.lexInline(markdownString, lexerOptions)
+    : marked.lexer(markdownString, lexerOptions);
 
   // parser options
   const parserOptions = {
     renderer: new ReactRenderer({
-      renderer: props.renderer,
-      baseURL: props.baseURL,
-      openLinksInNewTab: props.openLinksInNewTab,
-      langPrefix: props.langPrefix,
+      renderer: options.renderer,
+      baseURL: options.baseURL,
+      openLinksInNewTab: options.openLinksInNewTab,
+      langPrefix: options.langPrefix,
     }),
   };
 
   const parser = new ReactParser(parserOptions);
-  const children = props.isInline ? parser.parseInline(tokens) : parser.parse(tokens);
+  const children = options.isInline ? parser.parseInline(tokens) : parser.parse(tokens);
 
   return createElement(Fragment, null, children);
 };
