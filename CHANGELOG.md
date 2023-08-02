@@ -13,6 +13,13 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v2.0.0 (2023-08-02)
+
+#### Features
+
+- update marked to v6.0.0 ([82f6141](https://github.com/sibiraj-s/marked-react/commit/82f6141))
+- remove types/marked dependency ([82f6141](https://github.com/sibiraj-s/marked-react/commit/82f6141))
+
 ## v1.4.0 (2023-07-03)
 
 #### Bug Fixes
@@ -31,19 +38,19 @@ All notable changes to this project will be documented in this file.
 
 #### Bug Fixes
 
-- Disable sourcemaps ([3e1edfd](https://github.com/sibiraj-s/marked-react/commit/3e1edfd))
+- disable sourcemaps ([3e1edfd](https://github.com/sibiraj-s/marked-react/commit/3e1edfd))
 
 ## v1.3.1 (2022-10-25)
 
 #### Bug Fixes
 
-- Fix alignment in table cells ([2552244](https://github.com/sibiraj-s/marked-react/commit/2552244))
+- fix alignment in table cells ([2552244](https://github.com/sibiraj-s/marked-react/commit/2552244))
 
 #### Dependency Updates
 
-- Update marked to v4.1.1 ([33ea78a](https://github.com/sibiraj-s/marked-react/commit/33ea78a))
-- Update typescript to v4.8.4 ([f8bef5c](https://github.com/sibiraj-s/marked-react/commit/f8bef5c))
-- Update rollup to v3 ([df6cb0e](https://github.com/sibiraj-s/marked-react/commit/df6cb0e))
+- update marked to v4.1.1 ([33ea78a](https://github.com/sibiraj-s/marked-react/commit/33ea78a))
+- update typescript to v4.8.4 ([f8bef5c](https://github.com/sibiraj-s/marked-react/commit/f8bef5c))
+- update rollup to v3 ([df6cb0e](https://github.com/sibiraj-s/marked-react/commit/df6cb0e))
 
 ## v1.3.0 (2022-08-30)
 
