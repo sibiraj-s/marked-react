@@ -8,17 +8,20 @@
   "repository": "https://github.com/sibiraj-s/marked-react.git",
   "bugs": "https://github.com/sibiraj-s/marked-react/issues",
   "homepage": "https://github.com/sibiraj-s/marked-react#readme",
-  "main": "./dist/marked-react.cjs",
-  "module": "./dist/marked-react.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/marked-react.cjs",
-      "import": "./dist/marked-react.js"
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     },
     "./package.json": "./package.json"
   },
-  "types": "./dist/index.d.ts",
   "keywords": [
     "react",
     "markdown",
@@ -31,7 +34,7 @@
   ],
   "scripts": {
     "lint": "eslint . --ignore-path .gitignore --ext .js,.jsx,.ts,.tsx",
-    "build": "rollup -c",
+    "build": "tsup",
     "dev": "storybook dev -p 7007",
     "build:storybook": "storybook build",
     "test": "vitest --coverage",
@@ -46,9 +49,6 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
-    "@rollup/plugin-commonjs": "^25.0.7",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-typescript": "^11.1.5",
     "@storybook/addon-essentials": "^7.5.3",
     "@storybook/manager-api": "^7.5.3",
     "@storybook/react": "^7.5.3",
@@ -72,8 +72,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-lowlight": "^3.0.0",
-    "rollup": "^4.5.2",
     "storybook": "^7.5.3",
+    "tsup": "^8.0.1",
     "typescript": "^5.3.2",
     "vitest": "^0.34.6"
   }
