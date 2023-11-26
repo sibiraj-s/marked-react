@@ -5,7 +5,7 @@ on:
     branches: master
 
 env:
-  NODE_VERSION: 18
+  NODE_VERSION: 20
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -20,10 +20,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
@@ -35,7 +35,7 @@ jobs:
         run: npm run build:storybook
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v2
         with:
           path: ./storybook-static
 
