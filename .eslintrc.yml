@@ -11,13 +11,14 @@ rules:
   react/prop-types: off
   react-hooks/rules-of-hooks: error
 
+parserOptions:
+  project: tsconfig.eslint.json
+
 overrides:
   - files:
       - '*.ts'
     extends:
       - pegasus/typescript
-    parserOptions:
-      project: tsconfig.json
   - files:
       - scripts/*.js
       - .storybook/*.{js,cjs}
@@ -28,8 +29,6 @@ overrides:
     extends:
       - pegasus/typescript
       - plugin:storybook/recommended
-    parserOptions:
-      project: tsconfig.json
 
 settings:
   react:

@@ -1,4 +1,6 @@
-module.exports = {
+import { StorybookConfig } from '@storybook/react-vite';
+
+const config: StorybookConfig = {
   stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-essentials'],
   framework: {
@@ -7,5 +9,8 @@ module.exports = {
   },
   core: {
     disableTelemetry: true,
+    disableWhatsNewNotifications: true,
   },
 };
+
+export default config;
