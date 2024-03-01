@@ -1,4 +1,4 @@
-import { createElement, Fragment, useRef } from 'react';
+import { createElement, Fragment } from 'react';
 import { Marked, MarkedOptions } from 'marked';
 
 import ReactParser from './ReactParser';
@@ -33,11 +33,13 @@ const defaultProps = {
   renderer: undefined,
 };
 
+const markedInstance = new Marked();
+
 const Markdown = (props: MarkdownProps) => {
   validateComponentProps(props);
 
   const options = { ...defaultProps, ...props };
-  const { current: marked } = useRef<Marked>(options.instance ?? new Marked());
+  const marked = options.instance ?? markedInstance;
 
   // lexer options
   const lexerOptions = {
