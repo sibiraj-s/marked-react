@@ -45,7 +45,7 @@
     "react": "^16.8.0 || >=17.0.0"
   },
   "dependencies": {
-    "marked": "^6.0.0"
+    "marked": "^12.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.0.3",

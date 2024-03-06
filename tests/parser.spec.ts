@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import { Token } from 'marked';
 
-import ReactParser, { ParserTokens } from '../src/ReactParser';
+import ReactParser from '../src/ReactParser';
 import ReactRenderer from '../src/ReactRenderer';
 
 const renderer = new ReactRenderer({
@@ -21,31 +22,33 @@ describe('ReactParser', () => {
   });
 
   it('should parse text', () => {
-    const tokens = [
+    const tokens: Token[] = [
       {
         type: 'text',
         text: 'Hello world!',
+        raw: 'Hello world!',
       },
     ];
 
-    const parsed = parser.parse(tokens as ParserTokens);
+    const parsed = parser.parse(tokens as Token[]);
     expect(parsed.length).toBe(1);
     expect(parsed[0]).toEqual('Hello world!');
   });
 
   it('should parse html', () => {
-    const tokens = [
+    const tokens: Token[] = [
       {
         type: 'html',
         text: 'Hello world!',
+        raw: 'Hello world!',
       },
     ];
 
-    const parsed = parser.parse(tokens as ParserTokens);
+    const parsed = parser.parse(tokens);
     expect(parsed.length).toBe(1);
     expect(parsed[0]).toEqual('Hello world!');
 
-    const inlineParsed = parser.parseInline(tokens as ParserTokens);
+    const inlineParsed = parser.parseInline(tokens);
     expect(inlineParsed.length).toBe(1);
     expect(inlineParsed[0]).toEqual('Hello world!');
   });
@@ -55,9 +58,10 @@ describe('ReactParser', () => {
       {
         type: 'escape',
         text: '\\',
+        raw: '\\',
       },
     ];
-    const inlineParsed = parser.parseInline(tokens as ParserTokens);
+    const inlineParsed = parser.parseInline(tokens);
     expect(inlineParsed.length).toBe(1);
     expect(inlineParsed[0]).toEqual('\\');
   });
@@ -69,9 +73,9 @@ describe('ReactParser', () => {
       },
     ];
 
-    const parsed = parser.parse(tokens as ParserTokens);
+    const parsed = parser.parse(tokens as Token[]);
     expect(parsed[0]).toEqual(null);
-    const inlineParsed = parser.parseInline(tokens as ParserTokens);
+    const inlineParsed = parser.parseInline(tokens as Token[]);
     expect(inlineParsed[0]).toEqual(null);
   });
 });

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import type { Token, TokensList } from 'marked';
+import type { Token, Tokens } from 'marked';
 
 import ReactRenderer, { HeadingLevels } from './ReactRenderer';
 import { unescape } from './helpers';
@@ -8,8 +8,6 @@ interface ReactParserOptions {
   renderer: ReactRenderer;
 }
 
-export type ParserTokens = Token[] | TokensList;
-
 class ReactParser {
   renderer: ReactRenderer;
 
@@ -17,7 +15,7 @@ class ReactParser {
     this.renderer = options.renderer;
   }
 
-  parse(tokens: ParserTokens = []): ReactNode[] {
+  parse(tokens: Token[]): ReactNode[] {
     return tokens.map((token) => {
       switch (token.type) {
         case 'space': {
@@ -34,17 +32,20 @@ class ReactParser {
         }
 
         case 'text': {
-          const textTokens = token.tokens;
-          return textTokens ? this.parseInline(textTokens) : token.text;
+          const textToken = token as Tokens.Text;
+          return textToken.tokens ? this.parseInline(textToken.tokens) : token.text;
         }
 
         case 'blockquote': {
-          const quote = this.parse(token.tokens);
+          const blockquoteToken = token as Tokens.Blockquote;
+          const quote = this.parse(blockquoteToken.tokens);
           return this.renderer.blockquote(quote);
         }
 
         case 'list': {
-          const children = token.items.map((item) => {
+          const listToken = token as Tokens.List;
+
+          const children = listToken.items.map((item) => {
             const listItemChildren = [];
 
             if (item.task) {
@@ -68,14 +69,15 @@ class ReactParser {
         }
 
         case 'table': {
-          const headerCells = token.header.map((cell, index) => {
+          const tableToken = token as Tokens.Table;
+          const headerCells = tableToken.header.map((cell, index) => {
             return this.renderer.tableCell(this.parseInline(cell.tokens), { header: true, align: token.align[index] });
           });
 
           const headerRow = this.renderer.tableRow(headerCells);
           const header = this.renderer.tableHeader(headerRow);
 
-          const bodyChilren = token.rows.map((row) => {
+          const bodyChilren = tableToken.rows.map((row) => {
             const rowChildren = row.map((cell, index) => {
               return this.renderer.tableCell(this.parseInline(cell.tokens), {
                 header: false,
@@ -103,7 +105,7 @@ class ReactParser {
     });
   }
 
-  parseInline(tokens: ParserTokens = []): ReactNode[] {
+  parseInline(tokens: Token[] = []): ReactNode[] {
     return tokens.map((token) => {
       switch (token.type) {
         case 'text': {
