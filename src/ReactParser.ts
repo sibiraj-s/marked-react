@@ -57,7 +57,7 @@ class ReactParser {
             return this.renderer.listItem(listItemChildren);
           });
 
-          return this.renderer.list(children, token.ordered);
+          return this.renderer.list(children, token.ordered, token.ordered ? token.start : undefined);
         }
 
         case 'code': {
