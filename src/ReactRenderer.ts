@@ -96,7 +96,7 @@ class ReactRenderer {
   }
 
   list(children: ReactNode, ordered: boolean, start: number | undefined) {
-    return this.#h(ordered ? 'ol' : 'ul', children, ordered ? { start } : {});
+    return this.#h(ordered ? 'ol' : 'ul', children, ordered && start !== 1 ? { start } : {});
   }
 
   listItem(children: ReactNode[]) {
