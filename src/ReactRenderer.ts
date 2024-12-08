@@ -95,8 +95,8 @@ class ReactRenderer {
     return this.#h('blockquote', children);
   }
 
-  list(children: ReactNode, ordered: boolean) {
-    return this.#h(ordered ? 'ol' : 'ul', children);
+  list(children: ReactNode, ordered: boolean, start: number | undefined) {
+    return this.#h(ordered ? 'ol' : 'ul', children, ordered && start !== 1 ? { start } : {});
   }
 
   listItem(children: ReactNode[]) {

@@ -89,6 +89,11 @@ const cases = [
     html: '<ol><li>option-1</li><li>option-2</li></ol>',
   },
   {
+    title: 'render ordered lists with different start value',
+    markdown: '2. option-2\n3. option-3',
+    html: '<ol start="2"><li>option-2</li><li>option-3</li></ol>',
+  },
+  {
     title: 'render codeblocks',
     markdown: '```\n<script>console.log("Hello")</script>\n```',
     html: '<pre><code>&lt;script&gt;console.log(&quot;Hello&quot;)&lt;/script&gt;</code></pre>',
