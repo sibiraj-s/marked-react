@@ -1,4 +1,6 @@
 npm run test -- --run
 
+npm run build
+
 echo "\npublint:"
 npx --no -- publint

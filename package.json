@@ -5,7 +5,7 @@
   "type": "module",
   "author": "sibiraj-s",
   "license": "MIT",
-  "repository": "https://github.com/sibiraj-s/marked-react.git",
+  "repository": "github:sibiraj-s/marked-react",
   "bugs": "https://github.com/sibiraj-s/marked-react/issues",
   "homepage": "https://github.com/sibiraj-s/marked-react#readme",
   "main": "./dist/index.cjs",
@@ -17,8 +17,8 @@
         "types": "./dist/index.d.cts",
         "default": "./dist/index.cjs"
       },
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     },
     "./package.json": "./package.json"
   },
