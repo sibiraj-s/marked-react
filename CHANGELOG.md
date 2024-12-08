@@ -13,6 +13,16 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v3.0.0 (2024-12-08)
+
+#### Bug Fixes
+
+- Fix ordered list start attribute (#34) ([d77bd6d](https://github.com/sibiraj-s/marked-react/commit/d77bd6d))
+
+#### Features
+
+- update marked to v15.0.0 ([bf99816](https://github.com/sibiraj-s/marked-react/commit/bf99816))
+
 ## v2.0.0 (2023-08-02)
 
 #### Features
