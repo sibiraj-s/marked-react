@@ -48,6 +48,7 @@ class ReactParser {
         case 'list': {
           const listToken = token as Tokens.List;
 
+          this.renderer.elIdList.push(0);
           const children = listToken.items.map((item) => {
             const listItemChildren = [];
 
@@ -61,6 +62,7 @@ class ReactParser {
 
             return this.renderer.listItem(listItemChildren);
           });
+          this.renderer.elIdList.pop();
 
           return this.renderer.list(
             children,
@@ -79,26 +81,33 @@ class ReactParser {
 
         case 'table': {
           const tableToken = token as Tokens.Table;
+
+          this.renderer.elIdList.push(0);
           const headerCells = tableToken.header.map((cell, index) => {
             return this.renderer.tableCell(this.parseInline(cell.tokens), {
               header: true,
               align: token.align[index],
             });
           });
+          this.renderer.elIdList.pop();
 
           const headerRow = this.renderer.tableRow(headerCells);
           const header = this.renderer.tableHeader(headerRow);
 
+          this.renderer.elIdList.push(0);
           const bodyChilren = tableToken.rows.map((row) => {
+            this.renderer.elIdList.push(0);
             const rowChildren = row.map((cell, index) => {
               return this.renderer.tableCell(this.parseInline(cell.tokens), {
                 header: false,
                 align: token.align[index],
               });
             });
+            this.renderer.elIdList.pop();
 
             return this.renderer.tableRow(rowChildren);
           });
+          this.renderer.elIdList.pop();
 
           const body = this.renderer.tableBody(bodyChilren);
 
