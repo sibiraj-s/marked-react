@@ -16,7 +16,8 @@ class ReactParser {
   }
 
   parse(tokens: Token[]): ReactNode[] {
-    return tokens.map((token) => {
+    this.renderer.elIdList.push(0);
+    const result = tokens.map((token) => {
       switch (token.type) {
         case 'space': {
           return null;
@@ -33,7 +34,9 @@ class ReactParser {
 
         case 'text': {
           const textToken = token as Tokens.Text;
-          return textToken.tokens ? this.parseInline(textToken.tokens) : token.text;
+          return textToken.tokens
+            ? this.parseInline(textToken.tokens)
+            : token.text;
         }
 
         case 'blockquote': {
@@ -49,7 +52,9 @@ class ReactParser {
             const listItemChildren = [];
 
             if (item.task) {
-              listItemChildren.push(this.renderer.checkbox(item.checked ?? false));
+              listItemChildren.push(
+                this.renderer.checkbox(item.checked ?? false)
+              );
             }
 
             listItemChildren.push(this.parse(item.tokens));
@@ -57,7 +62,11 @@ class ReactParser {
             return this.renderer.listItem(listItemChildren);
           });
 
-          return this.renderer.list(children, token.ordered, token.ordered ? token.start : undefined);
+          return this.renderer.list(
+            children,
+            token.ordered,
+            token.ordered ? token.start : undefined
+          );
         }
 
         case 'code': {
@@ -71,7 +80,10 @@ class ReactParser {
         case 'table': {
           const tableToken = token as Tokens.Table;
           const headerCells = tableToken.header.map((cell, index) => {
-            return this.renderer.tableCell(this.parseInline(cell.tokens), { header: true, align: token.align[index] });
+            return this.renderer.tableCell(this.parseInline(cell.tokens), {
+              header: true,
+              align: token.align[index],
+            });
           });
 
           const headerRow = this.renderer.tableRow(headerCells);
@@ -103,10 +115,13 @@ class ReactParser {
         }
       }
     });
+    this.renderer.elIdList.pop();
+    return result;
   }
 
   parseInline(tokens: Token[] = []): ReactNode[] {
-    return tokens.map((token) => {
+    this.renderer.elIdList.push(0);
+    const result = tokens.map((token) => {
       switch (token.type) {
         case 'text': {
           return this.renderer.text(unescape(token.text));
@@ -154,6 +169,8 @@ class ReactParser {
         }
       }
     });
+    this.renderer.elIdList.pop();
+    return result;
   }
 }
 
