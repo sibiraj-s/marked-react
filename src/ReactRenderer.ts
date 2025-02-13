@@ -40,7 +40,11 @@ class ReactRenderer {
 
         this[rendererName] = <T extends typeof originalFunction>(...args: Parameters<T>) => {
           this.#incrementElId();
-          return rendererFunction.apply(this, args);
+          let ret = rendererFunction.apply(this, args);
+          if (ret === false) {
+            ret = originalFunction.apply(this, args);
+          }
+          return ret || "";
         };
       });
     }
