@@ -68,12 +68,14 @@ const cases = [
   {
     title: 'render images',
     markdown: '![Random Image](https://placeholder.com/pic.png)',
-    html: '<p><img src="https://placeholder.com/pic.png" alt="Random Image"/></p>',
+    // react 19, adds link rel="preload" as="image"
+    html: '<link rel="preload" as="image" href="https://placeholder.com/pic.png"/><p><img src="https://placeholder.com/pic.png" alt="Random Image"/></p>',
   },
   {
     title: 'render image src with baseURL',
     markdown: '![Random Image](pic.png)',
-    html: '<p><img src="https://placeholder.com/pic.png" alt="Random Image"/></p>',
+    // react 19, adds link rel="preload" as="image"
+    html: '<link rel="preload" as="image" href="https://placeholder.com/pic.png"/><p><img src="https://placeholder.com/pic.png" alt="Random Image"/></p>',
     props: {
       baseURL: 'https://placeholder.com',
     },
@@ -163,7 +165,8 @@ const cases = [
   {
     title: 'parse images inside links',
     markdown: '[![Tests](https://p.com/i.png)](https://p.com)',
-    html: '<p><a href="https://p.com" target="_blank"><img src="https://p.com/i.png" alt="Tests"/></a></p>',
+    // react 19, adds link rel="preload" as="image"
+    html: '<link rel="preload" as="image" href="https://p.com/i.png"/><p><a href="https://p.com" target="_blank"><img src="https://p.com/i.png" alt="Tests"/></a></p>',
   },
   {
     title: 'render task list correctly',
