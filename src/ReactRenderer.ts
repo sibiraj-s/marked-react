@@ -53,6 +53,7 @@ class ReactRenderer {
   #h<T extends ElementType>(el: T, children: ReactNode = null, props = {}): ReactElement {
     const elProps = {
       key: `marked-react-${this.elementId}`,
+      suppressHydrationWarning: true,
     };
 
     this.#incrementElId();
