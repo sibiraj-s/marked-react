@@ -1,6 +1,7 @@
 import { it, expect, describe } from 'vitest';
 import { createElement, ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
+import { Marked } from 'marked';
 
 import Markdown from '../src/index';
 import { CustomReactRenderer, HeadingLevels } from '../src/ReactRenderer';
@@ -16,6 +17,24 @@ describe('Markdown Component', () => {
     const marked = createElement(Markdown, null, '# Hello world!');
     const html = renderToStaticMarkup(marked);
     expect(html).toBe('<h1>Hello world!</h1>');
+  });
+
+  it('should render correctly with custom instance', () => {
+    const instance = new Marked();
+    const marked = createElement(Markdown, { instance }, '# Hello world!');
+    const html = renderToStaticMarkup(marked);
+    expect(html).toBe('<h1>Hello world!</h1>');
+  });
+
+  it('should accept global tokenizer options', () => {
+    const instance = new Marked({
+      tokenizer: {
+        heading: () => undefined,
+      },
+    });
+    const marked = createElement(Markdown, { instance }, '# Hello world!');
+    const html = renderToStaticMarkup(marked);
+    expect(html).toBe('<p># Hello world!</p>');
   });
 
   it('should prefer value over children render markdown correctly', () => {
