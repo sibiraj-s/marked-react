@@ -45,6 +45,7 @@ const Markdown = (props: MarkdownProps) => {
   const lexerOptions = {
     breaks: options.breaks,
     gfm: options.gfm,
+    tokenizer: marked.defaults.tokenizer,
   };
 
   // convert input markdown into tokens
