@@ -38,9 +38,13 @@ class ReactRenderer {
 
         const originalFunction = this[rendererName];
 
-        this[rendererName] = <T extends typeof originalFunction>(...args: Parameters<T>) => {
+        this[rendererName] = (...args: unknown[]) => {
           this.#incrementElId();
-          return rendererFunction.apply(this, args);
+          let ret = rendererFunction.apply(this, args);
+          if (ret === false) {
+            ret = originalFunction.apply(this, args);
+          }
+          return ret;
         };
       });
     }
