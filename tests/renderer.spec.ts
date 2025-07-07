@@ -41,7 +41,8 @@ const cases: Case[] = [
     title: 'img tag',
     method: 'image',
     args: ['https://example.com', 'Example', 'example.com'],
-    html: '<img src="https://example.com" alt="Example" title="example.com"/>',
+    // react 19, adds link rel="preload" as="image"
+    html: '<link rel="preload" as="image" href="https://example.com"/><img src="https://example.com" alt="Example" title="example.com"/>',
   },
   {
     title: 'code tag',

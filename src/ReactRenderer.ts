@@ -60,6 +60,7 @@ class ReactRenderer {
   ): ReactElement {
     const elProps = {
       key: `marked-react-${this.elementId}`,
+      suppressHydrationWarning: true,
     };
 
     this.#incrementElId();
