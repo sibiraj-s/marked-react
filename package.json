@@ -34,7 +34,7 @@
   ],
   "scripts": {
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "build": "tsup",
+    "build": "tsdown",
     "dev": "storybook dev -p 7007",
     "build:storybook": "storybook build",
     "test": "vitest --coverage",
@@ -70,7 +70,7 @@
     "react-dom": "^19.1.0",
     "react-lowlight": "^3.1.0",
     "storybook": "^9.0.15",
-    "tsup": "^8.5.0",
+    "tsdown": "^0.12.9",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   }
