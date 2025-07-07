@@ -34,9 +34,7 @@ class ReactParser {
 
         case 'text': {
           const textToken = token as Tokens.Text;
-          return textToken.tokens
-            ? this.parseInline(textToken.tokens)
-            : token.text;
+          return textToken.tokens ? this.parseInline(textToken.tokens) : token.text;
         }
 
         case 'blockquote': {
@@ -53,9 +51,7 @@ class ReactParser {
             const listItemChildren = [];
 
             if (item.task) {
-              listItemChildren.push(
-                this.renderer.checkbox(item.checked ?? false)
-              );
+              listItemChildren.push(this.renderer.checkbox(item.checked ?? false));
             }
 
             listItemChildren.push(this.parse(item.tokens));
@@ -64,11 +60,7 @@ class ReactParser {
           });
           this.renderer.elIdList.pop();
 
-          return this.renderer.list(
-            children,
-            token.ordered,
-            token.ordered ? token.start : undefined
-          );
+          return this.renderer.list(children, token.ordered, token.ordered ? token.start : undefined);
         }
 
         case 'code': {

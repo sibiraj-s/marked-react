@@ -19,6 +19,12 @@ export default pegasus.tsConfig(
       'react/prop-types': 'off',
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
+      'max-statements': [
+        'error',
+        {
+          max: 32,
+        },
+      ],
     },
     settings: {
       react: {

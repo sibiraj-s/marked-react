@@ -41,23 +41,20 @@ class ReactRenderer {
           return;
         }
 
-        const originalFunction = this[rendererName];
-
-        this[rendererName] = <T extends typeof originalFunction>(
-          ...args: Parameters<T>
-        ) => {
-          this.#incrementElId();
-          return rendererFunction.apply(this, args);
-        };
+        Object.defineProperty(this, rendererName, {
+          value(this: ReactRenderer, ...args: Parameters<(typeof this)[typeof rendererName]>) {
+            this.#incrementElId();
+            return rendererFunction.apply(this, args);
+          },
+          writable: true,
+          enumerable: true,
+          configurable: true,
+        });
       });
     }
   }
 
-  #h<T extends ElementType>(
-    el: T,
-    children: ReactNode = null,
-    props = {}
-  ): ReactElement {
+  #h<T extends ElementType>(el: T, children: ReactNode = null, props = {}): ReactElement {
     const elProps = {
       key: `marked-react-${this.elementId}`,
       suppressHydrationWarning: true,
@@ -108,11 +105,7 @@ class ReactRenderer {
   }
 
   list(children: ReactNode, ordered: boolean, start: number | undefined) {
-    return this.#h(
-      ordered ? 'ol' : 'ul',
-      children,
-      ordered && start !== 1 ? { start } : {}
-    );
+    return this.#h(ordered ? 'ol' : 'ul', children, ordered && start !== 1 ? { start } : {});
   }
 
   listItem(children: ReactNode[]) {
