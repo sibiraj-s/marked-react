@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { createElement } from 'react';
 import Lowlight from 'react-lowlight';
 import javascript from 'highlight.js/lib/languages/javascript';

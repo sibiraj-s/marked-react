@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import Markdown from '../src/Markdown';
 import markdownDetail from './details/default.md?raw';
