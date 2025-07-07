@@ -2,7 +2,8 @@ name: gh-pages
 
 on:
   push:
-    branches: master
+    branches:
+      - master
 
 env:
   NODE_VERSION: 22
