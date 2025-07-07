@@ -13,6 +13,17 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v3.0.1 (2025-07-07)
+
+#### Bug Fixes
+
+- Preserve components while streaming ([9703829](https://github.com/sibiraj-s/marked-react/commit/9703829))
+- Fix tokenizer not read when instance provided ([7b99496](https://github.com/sibiraj-s/marked-react/commit/7b99496))
+
+#### Internal
+
+- Migrate from tsup to tsdown ([e9a26e8](https://github.com/sibiraj-s/marked-react/commit/e9a26e8))
+
 ## v3.0.0 (2024-12-08)
 
 #### Bug Fixes
