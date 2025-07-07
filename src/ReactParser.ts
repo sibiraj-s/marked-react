@@ -16,7 +16,8 @@ class ReactParser {
   }
 
   parse(tokens: Token[]): ReactNode[] {
-    return tokens.map((token) => {
+    this.renderer.elIdList.push(0);
+    const result = tokens.map((token) => {
       switch (token.type) {
         case 'space': {
           return null;
@@ -33,7 +34,9 @@ class ReactParser {
 
         case 'text': {
           const textToken = token as Tokens.Text;
-          return textToken.tokens ? this.parseInline(textToken.tokens) : token.text;
+          return textToken.tokens
+            ? this.parseInline(textToken.tokens)
+            : token.text;
         }
 
         case 'blockquote': {
@@ -45,19 +48,27 @@ class ReactParser {
         case 'list': {
           const listToken = token as Tokens.List;
 
+          this.renderer.elIdList.push(0);
           const children = listToken.items.map((item) => {
             const listItemChildren = [];
 
             if (item.task) {
-              listItemChildren.push(this.renderer.checkbox(item.checked ?? false));
+              listItemChildren.push(
+                this.renderer.checkbox(item.checked ?? false)
+              );
             }
 
             listItemChildren.push(this.parse(item.tokens));
 
             return this.renderer.listItem(listItemChildren);
           });
+          this.renderer.elIdList.pop();
 
-          return this.renderer.list(children, token.ordered, token.ordered ? token.start : undefined);
+          return this.renderer.list(
+            children,
+            token.ordered,
+            token.ordered ? token.start : undefined
+          );
         }
 
         case 'code': {
@@ -70,23 +81,33 @@ class ReactParser {
 
         case 'table': {
           const tableToken = token as Tokens.Table;
+
+          this.renderer.elIdList.push(0);
           const headerCells = tableToken.header.map((cell, index) => {
-            return this.renderer.tableCell(this.parseInline(cell.tokens), { header: true, align: token.align[index] });
+            return this.renderer.tableCell(this.parseInline(cell.tokens), {
+              header: true,
+              align: token.align[index],
+            });
           });
+          this.renderer.elIdList.pop();
 
           const headerRow = this.renderer.tableRow(headerCells);
           const header = this.renderer.tableHeader(headerRow);
 
+          this.renderer.elIdList.push(0);
           const bodyChilren = tableToken.rows.map((row) => {
+            this.renderer.elIdList.push(0);
             const rowChildren = row.map((cell, index) => {
               return this.renderer.tableCell(this.parseInline(cell.tokens), {
                 header: false,
                 align: token.align[index],
               });
             });
+            this.renderer.elIdList.pop();
 
             return this.renderer.tableRow(rowChildren);
           });
+          this.renderer.elIdList.pop();
 
           const body = this.renderer.tableBody(bodyChilren);
 
@@ -103,10 +124,13 @@ class ReactParser {
         }
       }
     });
+    this.renderer.elIdList.pop();
+    return result;
   }
 
   parseInline(tokens: Token[] = []): ReactNode[] {
-    return tokens.map((token) => {
+    this.renderer.elIdList.push(0);
+    const result = tokens.map((token) => {
       switch (token.type) {
         case 'text': {
           return this.renderer.text(unescape(token.text));
@@ -154,6 +178,8 @@ class ReactParser {
         }
       }
     });
+    this.renderer.elIdList.pop();
+    return result;
   }
 }
 

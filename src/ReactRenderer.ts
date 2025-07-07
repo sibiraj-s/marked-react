@@ -19,7 +19,7 @@ export interface ReactRendererOptions {
 }
 
 class ReactRenderer {
-  #elId = 0;
+  elIdList: number[] = [];
   #options: ReactRendererOptions;
 
   constructor(options: ReactRendererOptions = {}) {
@@ -32,13 +32,20 @@ class ReactRenderer {
         const rendererName = key as keyof ReactRenderer;
         const rendererFunction = value;
 
-        if (!this[rendererName] || rendererName === 'elementId' || typeof rendererFunction !== 'function') {
+        if (
+          !this[rendererName] ||
+          rendererName === 'elementId' ||
+          rendererName === 'elIdList' ||
+          typeof rendererFunction !== 'function'
+        ) {
           return;
         }
 
         const originalFunction = this[rendererName];
 
-        this[rendererName] = <T extends typeof originalFunction>(...args: Parameters<T>) => {
+        this[rendererName] = <T extends typeof originalFunction>(
+          ...args: Parameters<T>
+        ) => {
           this.#incrementElId();
           return rendererFunction.apply(this, args);
         };
@@ -46,7 +53,11 @@ class ReactRenderer {
     }
   }
 
-  #h<T extends ElementType>(el: T, children: ReactNode = null, props = {}): ReactElement {
+  #h<T extends ElementType>(
+    el: T,
+    children: ReactNode = null,
+    props = {}
+  ): ReactElement {
     const elProps = {
       key: `marked-react-${this.elementId}`,
       suppressHydrationWarning: true,
@@ -57,11 +68,11 @@ class ReactRenderer {
   }
 
   #incrementElId() {
-    this.#elId += 1;
+    this.elIdList[this.elIdList.length - 1] += 1;
   }
 
   get elementId() {
-    return this.#elId;
+    return this.elIdList.join('-');
   }
 
   heading(children: ReactNode, level: HeadingLevels) {
@@ -97,7 +108,11 @@ class ReactRenderer {
   }
 
   list(children: ReactNode, ordered: boolean, start: number | undefined) {
-    return this.#h(ordered ? 'ol' : 'ul', children, ordered && start !== 1 ? { start } : {});
+    return this.#h(
+      ordered ? 'ol' : 'ul',
+      children,
+      ordered && start !== 1 ? { start } : {}
+    );
   }
 
   listItem(children: ReactNode[]) {
@@ -105,7 +120,11 @@ class ReactRenderer {
   }
 
   checkbox(checked: ReactNode) {
-    return this.#h('input', null, { type: 'checkbox', disabled: true, checked });
+    return this.#h('input', null, {
+      type: 'checkbox',
+      disabled: true,
+      checked,
+    });
   }
 
   table(children: ReactNode[]) {
