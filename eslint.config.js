@@ -1,5 +1,5 @@
-import pegasus from "eslint-config-pegasus"
-import storybook from 'eslint-plugin-storybook'
+import pegasus from 'eslint-config-pegasus';
+import storybook from 'eslint-plugin-storybook';
 
 export default pegasus.tsConfig(
   pegasus.configs.default,
@@ -7,10 +7,7 @@ export default pegasus.tsConfig(
   pegasus.configs.react,
   {
     files: ['**/*.ts', '**/*.tsx', '.storybook/**/*.ts'],
-    extends: [
-      pegasus.configs.react,
-      ...pegasus.configs.typescript,
-    ],
+    extends: [pegasus.configs.react, ...pegasus.configs.typescript],
     languageOptions: {
       parserOptions: {
         projectService: true,
@@ -35,13 +32,9 @@ export default pegasus.tsConfig(
   },
   {
     files: ['**/*.stories.@(js|jsx|ts|tsx)'],
-    extends: [
-      pegasus.configs.react,
-      ...pegasus.configs.typescript,
-      ...storybook.configs["flat/recommended"]
-    ],
+    extends: [pegasus.configs.react, ...pegasus.configs.typescript, ...storybook.configs['flat/recommended']],
   },
   {
-    ignores: ['dist/']
-  }
-)
+    ignores: ['dist/'],
+  },
+);

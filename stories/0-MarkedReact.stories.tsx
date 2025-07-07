@@ -90,7 +90,7 @@ export const AllProps: Story = {
   },
 };
 
-export const InlineMarkdown:Story = {
+export const InlineMarkdown: Story = {
   ...Default,
   args: {
     value: 'Hello world!',
