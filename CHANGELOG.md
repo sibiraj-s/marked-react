@@ -13,6 +13,12 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v3.0.2 (2025-10-13)
+
+#### Bug Fixes
+
+- unescape `&nbsp;` and `&#160;` entities ([fc441d9](https://github.com/sibiraj-s/marked-react/commit/fc441d9))
+
 ## v3.0.1 (2025-07-07)
 
 #### Bug Fixes
