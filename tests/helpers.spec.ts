@@ -30,6 +30,7 @@ describe('Helpers', () => {
     expect(unescape('&#8364;')).toBe('€');
     expect(unescape('&#x40;')).toBe('@');
     expect(unescape('&#x20AC;')).toBe('€');
+    expect(unescape('&#160;')).toBe('\u00A0');
   });
 
   it('should unescape exotic entities', () => {
