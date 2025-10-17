@@ -1,17 +1,11 @@
-const htmlUnescapes: Record<string, string> = {
-  '&amp;': '&',
-  '&lt;': '<',
-  '&gt;': '>',
-  '&quot;': '"',
-  '&#39;': "'",
-};
-
-/** Used to match HTML entities and HTML characters. */
-const reEscapedHtml = /&(?:amp|lt|gt|quot|#(?:0+)?39);/g;
-const reHasEscapedHtml = RegExp(reEscapedHtml.source);
+import { decode } from 'html-entities';
 
 export const unescape = (str = '') => {
-  return reHasEscapedHtml.test(str) ? str.replace(reEscapedHtml, (entity) => htmlUnescapes[entity] || "'") : str;
+  if (!str || !str.includes('&')) {
+    return str;
+  }
+
+  return decode(str);
 };
 
 export const joinBase = (path: string, base?: string) => {

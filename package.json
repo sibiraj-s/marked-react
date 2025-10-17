@@ -45,6 +45,7 @@
     "react": "^16.8.0 || >=17.0.0"
   },
   "dependencies": {
+    "html-entities": "^2.6.0",
     "marked": "^16.0.0"
   },
   "devDependencies": {
