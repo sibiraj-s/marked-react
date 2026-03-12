@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "html-entities": "^2.6.0",
-    "marked": "^16.0.0"
+    "marked": "^17.0.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.4.4",
