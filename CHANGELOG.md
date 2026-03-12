@@ -13,6 +13,20 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v4.0.0 (2026-03-12)
+
+#### Bug Fixes
+
+- Fix package exports ([5541c6d](https://github.com/sibiraj-s/marked-react/commit/5541c6d))
+
+#### Dependency Updates
+
+- Breaking: Bump marked to v17 ([de59ed3](https://github.com/sibiraj-s/marked-react/commit/de59ed3))
+
+#### Internal
+
+- Replace HTML entity handling with html-entities ([b94068d](https://github.com/sibiraj-s/marked-react/commit/b94068d))
+
 ## v3.0.2 (2025-10-13)
 
 #### Bug Fixes
