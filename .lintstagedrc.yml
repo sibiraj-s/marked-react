@@ -1,5 +1,5 @@
 '*.{js,jsx,cjs,ts,tsx}':
-  - eslint --fix
-  - prettier --write
+  - oxlint --fix
+  - oxfmt --write
 
-'*.{html,css,md,yaml,yml,json}': prettier --write
+'*.{html,css,md,yaml,yml,json}': oxfmt --write

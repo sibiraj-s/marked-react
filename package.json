@@ -1,13 +1,23 @@
 {
   "name": "marked-react",
-  "description": "Render Markdown as React components",
   "version": "3.0.2",
-  "type": "module",
-  "author": "sibiraj-s",
-  "license": "MIT",
-  "repository": "github:sibiraj-s/marked-react",
-  "bugs": "https://github.com/sibiraj-s/marked-react/issues",
+  "description": "Render Markdown as React components",
+  "keywords": [
+    "markdown",
+    "marked",
+    "markedjs",
+    "no dangerouslySetInnerHTML",
+    "react"
+  ],
   "homepage": "https://github.com/sibiraj-s/marked-react#readme",
+  "bugs": "https://github.com/sibiraj-s/marked-react/issues",
+  "license": "MIT",
+  "author": "sibiraj-s",
+  "repository": "github:sibiraj-s/marked-react",
+  "files": [
+    "dist/"
+  ],
+  "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -22,57 +32,43 @@
     },
     "./package.json": "./package.json"
   },
-  "keywords": [
-    "react",
-    "markdown",
-    "marked",
-    "markedjs",
-    "no dangerouslySetInnerHTML"
-  ],
-  "files": [
-    "dist/"
-  ],
   "scripts": {
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "oxlint .",
     "build": "tsdown",
     "dev": "storybook dev -p 7007",
     "build:storybook": "storybook build",
     "test": "vitest --coverage",
-    "prepare": "is-ci || husky install",
+    "prepare": "is-ci || husky",
     "prepublishOnly": "is-ci || (npm run build && publint)"
-  },
-  "peerDependencies": {
-    "react": "^16.8.0 || >=17.0.0"
   },
   "dependencies": {
     "html-entities": "^2.6.0",
     "marked": "^16.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.1.0",
-    "@storybook/react": "^9.1.10",
-    "@storybook/react-vite": "^9.1.10",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.1",
-    "@vitest/coverage-v8": "^3.2.4",
+    "@commitlint/cli": "^20.4.4",
+    "@storybook/react": "^10.2.17",
+    "@storybook/react-vite": "^10.2.17",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitest/coverage-v8": "^4.0.18",
     "commitlint-config-non-conventional": "^1.0.1",
-    "eslint": "^9.37.0",
-    "eslint-config-pegasus": "^6.0.2",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.0.0",
-    "eslint-plugin-storybook": "^9.1.10",
     "highlight.js": "^11.11.1",
     "husky": "^9.1.7",
     "is-ci": "^4.1.0",
-    "lint-staged": "^16.2.4",
-    "prettier": "^3.6.2",
-    "publint": "^0.3.14",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "lint-staged": "^16.3.3",
+    "oxfmt": "^0.39.0",
+    "oxlint": "^1.54.0",
+    "publint": "^0.3.18",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "react-lowlight": "^3.1.0",
-    "storybook": "^9.1.10",
-    "tsdown": "^0.15.6",
+    "storybook": "^10.2.17",
+    "tsdown": "^0.21.2",
     "typescript": "^5.9.3",
-    "vitest": "^3.2.4"
+    "vitest": "^4.0.18"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || >=17.0.0"
   }
 }
