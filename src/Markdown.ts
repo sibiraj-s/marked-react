@@ -14,11 +14,11 @@ export interface MarkdownProps extends ReactRendererOptions, LexerOptions {
 }
 
 const validateComponentProps = (props: MarkdownProps) => {
-  if (props.value && typeof props.value !== 'string') {
+  if (props.value != null && typeof props.value !== 'string') {
     throw new TypeError(`[marked-react]: Expected value to be of type string but got ${typeof props.value}`);
   }
 
-  if (props.children && typeof props.children !== 'string') {
+  if (props.children != null && typeof props.children !== 'string') {
     throw new TypeError(`[marked-react]: Expected children to be of type string but got ${typeof props.children}`);
   }
 };

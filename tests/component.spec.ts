@@ -44,7 +44,7 @@ describe('Markdown Component', () => {
   });
 
   it('should throw error if children is not a string', () => {
-    const marked = createElement(Markdown, null, 1);
+    const marked = createElement(Markdown, null, 0);
 
     expect(() => renderToStaticMarkup(marked)).toThrowError(
       new TypeError('[marked-react]: Expected children to be of type string but got number'),
