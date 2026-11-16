@@ -80,10 +80,10 @@ class ReactRenderer {
     return this.#h('p', children);
   }
 
-  link(href: string, text: ReactNode) {
+  link(href: string, text: ReactNode, title: string | null = null) {
     const url = joinBase(href, this.#options.baseURL);
     const target = this.#options.openLinksInNewTab ? '_blank' : null;
-    return this.#h('a', text, { href: url, target });
+    return this.#h('a', text, { href: url, target, title });
   }
 
   image(src: string, alt: string, title: string | null = null) {

@@ -1,4 +1,4 @@
-import { test, expect, describe } from 'vitest';
+import { test, expect, describe, vi } from 'vitest';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
@@ -64,6 +64,16 @@ const cases = [
       baseURL: 'https://google.com',
       openLinksInNewTab: false,
     },
+  },
+  {
+    title: 'render links with title',
+    markdown: '[Google](https://google.com "Search")',
+    html: '<p><a href="https://google.com" target="_blank" title="Search">Google</a></p>',
+  },
+  {
+    title: 'render reference links with title',
+    markdown: '[Google][g]\n\n[g]: https://google.com "Search"',
+    html: '<p><a href="https://google.com" target="_blank" title="Search">Google</a></p>',
   },
   {
     title: 'render images',
@@ -174,6 +184,11 @@ const cases = [
     html: '<ul><li><input type="checkbox" disabled="" checked=""/>checked</li><li><input type="checkbox" disabled=""/>unchecked</li></ul>',
   },
   {
+    title: 'render loose task list correctly',
+    markdown: '- [x] checked\n\n- [ ] unchecked',
+    html: '<ul><li><input type="checkbox" disabled="" checked=""/><p>checked</p></li><li><input type="checkbox" disabled=""/><p>unchecked</p></li></ul>',
+  },
+  {
     title: 'not render task list with gfm disabled',
     markdown: '- [x] checked\n- [ ] unchecked',
     html: '<ul><li>[x] checked</li><li>[ ] unchecked</li></ul>',
@@ -188,5 +203,15 @@ describe('MarkedReact', () => {
     const marked = React.createElement(Markdown, props, markdown);
     const result = ReactDOMServer.renderToStaticMarkup(marked);
     expect(result).toEqual(html.trim());
+  });
+
+  test('should not warn for link definitions and task list checkboxes', () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const markdown = '[ref][r]\n\n[r]: https://example.com\n\n- [ ] tight\n- [x] task\n\n1. [ ] loose\n\n2. [x] task';
+
+    ReactDOMServer.renderToStaticMarkup(React.createElement(Markdown, null, markdown));
+
+    expect(warn).not.toHaveBeenCalled();
+    warn.mockRestore();
   });
 });
