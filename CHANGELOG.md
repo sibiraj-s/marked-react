@@ -13,6 +13,17 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## v4.0.1 (2026-11-16)
+
+#### Bug Fixes
+
+- Pass link title to rendered links ([302e1d1](https://github.com/sibiraj-s/marked-react/commit/302e1d1))
+- Fix console warnings for link reference definitions and task list checkboxes ([302e1d1](https://github.com/sibiraj-s/marked-react/commit/302e1d1))
+
+#### Internal
+
+- Use npm staged publishing ([e77d359](https://github.com/sibiraj-s/marked-react/commit/e77d359))
+
 ## v4.0.0 (2026-03-12)
 
 #### Bug Fixes
