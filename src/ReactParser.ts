@@ -110,6 +110,11 @@ class ReactParser {
           return this.renderer.hr();
         }
 
+        case 'def':
+        case 'checkbox': {
+          return null;
+        }
+
         default: {
           console.warn(`Token with "${token.type}" type was not found`); // eslint-disable-line no-console
           return null;
@@ -145,7 +150,7 @@ class ReactParser {
         }
 
         case 'link': {
-          return this.renderer.link(token.href, this.parseInline(token.tokens));
+          return this.renderer.link(token.href, this.parseInline(token.tokens), token.title);
         }
 
         case 'image': {
@@ -162,6 +167,11 @@ class ReactParser {
 
         case 'escape': {
           return this.renderer.text(token.text);
+        }
+
+        // task list checkboxes in loose lists are rendered by the list item
+        case 'checkbox': {
+          return null;
         }
 
         default: {
